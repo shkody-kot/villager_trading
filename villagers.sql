@@ -62,7 +62,7 @@ CREATE OR REPLACE TABLE transactions (
 	customer_id 	int NOT NULL,
 	villager_id		int NOT NULL,
 	discount_id		int,
-	qty_sold		int NOT NULL,
+	total_price		int NOT NULL,
 	PRIMARY KEY (transaction_id),
 	CONSTRAINT fk_customer_id FOREIGN KEY (customer_id) REFERENCES customers(customers_id),
 	CONSTRAINT fk_villager_id FOREIGN KEY (villager_id) REFERENCES villagers(villager_id),
@@ -86,6 +86,7 @@ CREATE OR REPLACE TABLE villager_has_items (
 CREATE OR REPLACE TABLE transaction_has_items (
 	transaction_id	int NOT NULL,
 	item_id			int NOT NULL,
+	quantity		int NOT NULL,
 	PRIMARY KEY (transaction_id, item_id),
 	CONSTRAINT fk_transaction_items_transaction FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id),
 	CONSTRAINT fk_transaction_items_item FOREIGN KEY (item_id) REFERENCES items(item_id)
