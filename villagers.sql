@@ -1,5 +1,18 @@
 -- Group 51: Ready for the SQL
 -- Members: Ira Belyaeva, Kierra Young
+
+-- Drop all tables if exist
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE IF EXISTS trades;
+DROP TABLE IF EXISTS villagers;
+DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS discount_effects;
+DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS transactions;
+DROP TABLE IF EXISTS transaction_has_items;
+DROP TABLE IF EXISTS villager_has_items;
+SET FOREIGN_KEY_CHECKS = 1;
+
 -- -----------------------------------
 -- Create trades table
 -- -----------------------------------
@@ -13,9 +26,9 @@ CREATE OR REPLACE TABLE trades (
 -- Create villagers table
 -- -----------------------------------
 CREATE OR REPLACE TABLE villagers (
-    name			varchar(45) NOT NULL,
 	villager_id 	int NOT NULL AUTO_INCREMENT,
-	trade_name 		varchar(45) NOT NULL,
+	trade_name 		varchar(45) NOT NULL,	
+    name			varchar(45) NOT NULL,
 	age 			int NOT NULL,
 	status 			varchar(45) NOT NULL,
 	PRIMARY KEY (villager_id),
@@ -61,12 +74,12 @@ CREATE OR REPLACE TABLE transactions (
 	transaction_id	int NOT NULL AUTO_INCREMENT,
 	customer_id 	int NOT NULL,
 	villager_id		int NOT NULL,
-	discount_id		int NOT NULL,
+	discount_id		int,
 	total_price		int NOT NULL,
 	PRIMARY KEY (transaction_id),
 	CONSTRAINT fk_customer_id FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
 	CONSTRAINT fk_villager_id FOREIGN KEY (villager_id) REFERENCES villagers(villager_id),
-	CONSTRAINT fk__discounts_id FOREIGN KEY (discount_id) REFERENCES discount_effects (discount_id)
+	CONSTRAINT fk_discount_id FOREIGN KEY (discount_id) REFERENCES discount_effects (discount_id)
 );
 
 -- -------------------------------------------
@@ -124,7 +137,7 @@ VALUES ("Denni", (SELECT name FROM trades WHERE name = "Armorer"), 76, "deceased
 -- -------------------------------------------
 -- Insert sample data: discount_effects
 -- -------------------------------------------
-INSERT INTO discount_effects (name, percent)
+INSERT INTO discount_effects (name, `percent`)
 VALUES ("Hero", 30),
 ("RaidPrevention", 20),
 ("Bulk", 10);
