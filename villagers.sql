@@ -61,7 +61,7 @@ CREATE OR REPLACE TABLE transactions (
 	transaction_id	int NOT NULL AUTO_INCREMENT,
 	customer_id 	int NOT NULL,
 	villager_id		int NOT NULL,
-	discount_id		int NOT NULL,
+	discount_id		int,
 	total_price		int NOT NULL,
 	PRIMARY KEY (transaction_id),
 	CONSTRAINT fk_customer_id FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
