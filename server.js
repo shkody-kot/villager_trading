@@ -30,30 +30,31 @@ app.get('/', function (request, response) {
 	response.status(200).render('intro', { layout: 'main' });
 });
 
-app.get('/items', function (request, response) {
-	response.status(200).render('table', { layout: 'main' });
-});
-/*
-app.get('/transactions', function (request, response) {
-	response.status(200).render('table', { layout: 'main' });
+app.get('/villagers', function (request, response) {
+	response.status(200).render('villagers', { layout: 'main' });
 });
 
 app.get('/discounts', function (request, response) {
-	response.status(200).render('table', { layout: 'main' });
-});
-
-app.get('/trades', function (request, response) {
-	response.status(200).render('table', { layout: 'main' });
+	response.status(200).render('discounts', { layout: 'main' });
 });
 
 app.get('/customers', function (request, response) {
-	response.status(200).render('table', { layout: 'main' });
+	response.status(200).render('customers', { layout: 'main' });
 });
 
-app.get('/villagers', function (request, response) {
-	response.status(200).render('table', { layout: 'main' });
+app.get('/trades', function (request, response) {
+	response.status(200).render('trades', { layout: 'main' });
 });
-*/
+
+
+app.get('/transactions', function (request, response) {
+	response.status(200).render('transactions', { layout: 'main' });
+});
+
+app.get('/items', function (request, response) {
+	response.status(200).render('items', { layout: 'main' });
+});
+
 app.get('*', function (request, response) {
 	response.status(404).render('404', { layout: 'main' });
 })
