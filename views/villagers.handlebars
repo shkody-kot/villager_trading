@@ -2,14 +2,21 @@
 <center>
     <div></div>
     <img src="/construction3.png" class="tablesub">
+	
+	<table border="1" cellpadding="5" id="table">
+	</table>
+	
     <p>Add a new villager:</p>
     <form>
         <label for="name">Villager Name:</label><br>
         <input type="text" id="name" name="name"><br>
+		
         <label for="profession">Villager Profession:</label><br>
         <input type="text" id="profession" name="profession"><br>
+		
         <label for="age">Villager Age:</label><br>
         <input type="text" id="age" name="age"><br>
+		
         <label for="status">Villager Status:</label><br>
         <input type="text" id="status" name="status"><br>       
         <input type="submit" value="Submit">
@@ -18,17 +25,16 @@
     <p>Update existing villager:</p>
     <form>
         <label for="name">Choose an villager to update:</label><br>
-        <select id="name" name="name">
-            <option value="pillars">Pillars</option>
-            <option value="bones">Bones</option>
+        <select id="villager-new" name="name">
         </select><br>
+		
         <label for="profession">Villager Profession:</label><br>
-        <select id="profession" name="profession">
-            <option value="farmer">Farmer</option>
-            <option value="fletcher">Fletcher</option>
+        <select id="profession-update" name="profession">
         </select><br>
+		
         <label for="age">Villager Age:</label><br>
         <input type="text" id="age" name="age"><br>
+		
         <label for="status">Villager Status:</label><br>
         <input type="text" id="status" name="status"><br>  
         <input type="submit" value="Submit">
@@ -38,14 +44,11 @@
     <p>Add item to villager:</p>
     <form>
         <label for="name">Choose an villager to update:</label><br>
-        <select id="name" name="name">
-            <option value="pillars">Pillars</option>
-            <option value="bones">Bones</option>
+        <select id="villager-update" name="name">
         </select><br>
+		
         <label for="item">Choose an item to add:</label><br>
         <select id="item" name="item">
-            <option value="netherwart">Nether Wart</option>
-            <option value="apple">Apple</option>
         </select><br>
     </form>
 </center>

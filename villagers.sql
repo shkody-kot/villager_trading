@@ -1,4 +1,4 @@
--- Group 51: Ready for the SQL
+--	Group 51: Ready for the SQL
 -- Members: Ira Belyaeva, Kierra Young
 
 -- Drop all tables if exist
@@ -6,17 +6,17 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS professions;
 DROP TABLE IF EXISTS villagers;
 DROP TABLE IF EXISTS items;
-DROP TABLE IF EXISTS discount_effects;
+DROP TABLE IF EXISTS discounts;
 DROP TABLE IF EXISTS customers;
 DROP TABLE IF EXISTS transactions;
-DROP TABLE IF EXISTS transaction_has_items;
-DROP TABLE IF EXISTS villager_has_items;
+DROP TABLE IF EXISTS `transaction_has_items`;
+DROP TABLE IF EXISTS `villager_has_items`;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- -----------------------------------
 -- Create professions table
 -- -----------------------------------
-CREATE OR REPLACE TABLE professions (
+CREATE TABLE professions (
 	name		varchar(45) UNIQUE NOT NULL,
 	description	varchar(255) NOT NULL,
 	PRIMARY KEY (name)
@@ -25,7 +25,7 @@ CREATE OR REPLACE TABLE professions (
 -- -----------------------------------
 -- Create villagers table
 -- -----------------------------------
-CREATE OR REPLACE TABLE villagers (
+CREATE TABLE villagers (
 	villager_id 	int NOT NULL AUTO_INCREMENT,
 	trade_name 		varchar(45) NOT NULL,	
     name			varchar(45) NOT NULL,
@@ -38,7 +38,7 @@ CREATE OR REPLACE TABLE villagers (
 -- -----------------------------------
 -- Create items table
 -- -----------------------------------
-CREATE OR REPLACE TABLE items (
+CREATE TABLE items (
 	item_id		int NOT NULL AUTO_INCREMENT,
 	name		varchar(45) NOT NULL,
 	cost 		int NOT NULL,
@@ -51,7 +51,7 @@ CREATE OR REPLACE TABLE items (
 -- -----------------------------------
 -- Create discounts table
 -- -----------------------------------
-CREATE OR REPLACE TABLE discounts (
+CREATE TABLE discounts (
 	discount_id	int NOT NULL AUTO_INCREMENT,
 	name 		varchar(45) NOT NULL,
 	`percent`	int NOT NULL,
@@ -61,7 +61,7 @@ CREATE OR REPLACE TABLE discounts (
 -- -----------------------------------
 -- Create customers table
 -- -----------------------------------
-CREATE OR REPLACE TABLE customers (
+CREATE TABLE customers (
 	customer_id	int NOT NULL AUTO_INCREMENT,
 	name		varchar(45) NOT NULL,
 	PRIMARY KEY (customer_id)
@@ -70,10 +70,10 @@ CREATE OR REPLACE TABLE customers (
 -- -----------------------------------
 -- Create transactions table
 -- -----------------------------------
-CREATE OR REPLACE TABLE transactions (
+CREATE TABLE transactions (
 	transaction_id	int NOT NULL AUTO_INCREMENT,
 	customer_id 	int NOT NULL,
-	villager_id		int NOT NULL,
+	villager_id		int,
 	discount_id		int,
 	total_price		int NOT NULL,
 	PRIMARY KEY (transaction_id),
@@ -85,7 +85,7 @@ CREATE OR REPLACE TABLE transactions (
 -- -------------------------------------------
 -- Create intersection: villager_has_items
 -- -------------------------------------------
-CREATE OR REPLACE TABLE villager_has_items (
+CREATE TABLE villager_has_items (
 	villager_id		int NOT NULL,
 	item_id			int NOT NULL,
 	PRIMARY KEY (villager_id, item_id),
@@ -96,7 +96,7 @@ CREATE OR REPLACE TABLE villager_has_items (
 -- -------------------------------------------
 -- Create intersection: transaction_has_items
 -- -------------------------------------------
-CREATE OR REPLACE TABLE transaction_has_items (
+CREATE TABLE transaction_has_items (
 	transaction_id	int NOT NULL,
 	item_id			int NOT NULL,
 	quantity		int NOT NULL,

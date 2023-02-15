@@ -4,7 +4,7 @@ var path = require('path');
 var fs = require('fs');
 var hbs = require('express-handlebars')
 //database
-//var db = require('./connector');
+var db = require('./connector');
 
 //create application
 var app = express();
@@ -25,6 +25,49 @@ app.engine('handlebars', hbs.engine({
 	defaultLayout: 'main',
 	partialsDir: path.join(__dirname, '/views/partials')
 }));
+
+//Server POST requests
+app.post('/tables', function(request, response) {
+	var page = request.body.url;
+	console.log(page);
+	var query;
+	var update;
+	if (page == 'villagers')
+	{
+		query = "SELECT villagers.name, villagers.trade_name, villagers.age, villagers.status, items.name \
+		AS item FROM villagers \
+		INNER JOIN villager_has_items ON villagers.villager_id = villager_has_items.villager_id \
+		INNER JOIN items ON villager_has_items.item_id = items.item_id \
+		ORDER BY villagers.name DESC;";
+	}
+	else if (page == 'discounts') { query = "SELECT name, `percent` FROM discounts;"; }
+	else if (page == 'customers') { query = "SELECT name FROM customers;"; }
+	else if (page == 'professions') { query = "SELECT * FROM professions;"; }
+	else if (page == 'transactions')
+	{
+		query = "SELECT transactions.transaction_id, customers.name AS customer, \
+		villagers.name AS villager, discounts.name AS discount, transactions.total_price, \
+		items.name AS item, transaction_has_items.quantity \
+		FROM transactions \
+		LEFT JOIN discounts ON transactions.discount_id = discounts.discount_id \
+		LEFT JOIN villagers ON transactions.villager_id = villagers.villager_id \
+		LEFT JOIN customers ON transactions.customer_id = customers.customer_id \
+		LEFT JOIN transaction_has_items ON transactions.transaction_id = transaction_has_items.transaction_id \
+		LEFT JOIN items ON transaction_has_items.item_id = items.item_id \
+		ORDER BY transactions.transaction_id ASC;";
+	}
+	else if (page == 'items')
+	{
+		query = "SELECT name, cost, amount, trade_name FROM items \
+		GROUP BY trade_name \
+		ORDER BY trade_name ASC;";
+	}
+	
+	db.pool.query(query, function(error, results, fields) {
+		response.status(200).send(JSON.stringify(results));
+	});
+});
+
 
 //Server's GET requests for pages
 app.get('/', function (request, response) {
@@ -51,9 +94,11 @@ app.get('/transactions', function (request, response) {
 	response.status(200).render('transactions', { layout: 'main', active: {Transactions: true } });
 });
 
+
 app.get('/items', function (request, response) {
 	response.status(200).render('items', { layout: 'main', active: {Items: true } });
 });
+
 
 app.get('*', function (request, response) {
 	response.status(404).render('404', { layout: 'main' });

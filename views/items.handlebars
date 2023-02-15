@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <center>
     <img src="/construction2.png" class="tablesub">
+	
+	<table border="1" cellpadding="5" id="table">
+	</table>
+	
     <p>Add a new item:</p>
     <form>
         <label for="name">Item Name:</label><br>
         <input type="text" id="name" name="name"><br>
+		
         <label for="cost">Item Cost:</label><br>
         <input type="text" id="cost" name="cost"><br>
+		
         <label for="amount">Number in stock:</label><br>
         <input type="text" id="number" name="number"><br>
         <input type="submit" value="Submit">
@@ -14,12 +20,12 @@
     <p>Update existing item:</p>
     <form>
         <label for="name">Choose an item to update:</label><br>
-        <select id="name" name="name">
-            <option value="netherwart">Nether Wart</option>
-            <option value="apple">Apple</option>
+        <select id="item" name="name">
         </select><br>
+		
         <label for="cost">Item Cost:</label><br>
         <input type="text" id="cost" name="cost"><br>
+		
         <label for="amount">Number in stock:</label><br>
         <input type="text" id="number" name="number"><br>
         <input type="submit" value="Submit">
@@ -27,8 +33,6 @@
         <p>Remove existing item:</p>
     <form>
         <label for="name">Choose an item to remove:</label><br>
-        <select id="name" name="name">
-            <option value="netherwart">Nether Wart</option>
-            <option value="apple">Apple</option>
+        <select id="item-remove" name="name">
         </select><br>
 </center>
