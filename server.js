@@ -15,6 +15,7 @@ app.use(express.json());
 
 var port = process.env.PORT || 3000;
 
+
 //set server to use handlebars templates
 app.set('view engine', 'handlebars');
 
@@ -27,32 +28,32 @@ app.engine('handlebars', hbs.engine({
 
 //Server's GET requests for pages
 app.get('/', function (request, response) {
-	response.status(200).render('intro', { layout: 'main' });
+	response.status(200).render('intro', { layout: 'main', active: {Home: true } });
 });
 
 app.get('/villagers', function (request, response) {
-	response.status(200).render('villagers', { layout: 'main' });
+	response.status(200).render('villagers', { layout: 'main', active: {Villagers: true }});
 });
 
 app.get('/discounts', function (request, response) {
-	response.status(200).render('discounts', { layout: 'main' });
+	response.status(200).render('discounts', { layout: 'main', active: {Discounts: true } });
 });
 
 app.get('/customers', function (request, response) {
-	response.status(200).render('customers', { layout: 'main' });
+	response.status(200).render('customers', { layout: 'main', active: {Customers: true } });
 });
 
 app.get('/trades', function (request, response) {
-	response.status(200).render('trades', { layout: 'main' });
+	response.status(200).render('trades', { layout: 'main', active: {Professions: true } });
 });
 
 
 app.get('/transactions', function (request, response) {
-	response.status(200).render('transactions', { layout: 'main' });
+	response.status(200).render('transactions', { layout: 'main', active: {Transactions: true } });
 });
 
 app.get('/items', function (request, response) {
-	response.status(200).render('items', { layout: 'main' });
+	response.status(200).render('items', { layout: 'main', active: {Items: true } });
 });
 
 app.get('*', function (request, response) {
