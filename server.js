@@ -43,10 +43,9 @@ app.get('/customers', function (request, response) {
 	response.status(200).render('customers', { layout: 'main', active: {Customers: true } });
 });
 
-app.get('/trades', function (request, response) {
-	response.status(200).render('trades', { layout: 'main', active: {Professions: true } });
+app.get('/professions', function (request, response) {
+	response.status(200).render('professions', { layout: 'main', active: {Professions: true } });
 });
-
 
 app.get('/transactions', function (request, response) {
 	response.status(200).render('transactions', { layout: 'main', active: {Transactions: true } });
