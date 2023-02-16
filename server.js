@@ -31,7 +31,6 @@ app.post('/tables', function(request, response) {
 	var page = request.body.url;
 	console.log(page);
 	var query;
-	var update;
 	if (page == 'villagers')
 	{
 		query = "SELECT villagers.name, villagers.trade_name, villagers.age, villagers.status, items.name \
@@ -62,10 +61,41 @@ app.post('/tables', function(request, response) {
 		GROUP BY trade_name \
 		ORDER BY trade_name ASC;";
 	}
+	else if (page == 'home')
+	{
+		data = [];
+		db.pool.query("SELECT name AS villager FROM villagers;", function(error, results, fields) {
+			data.push(JSON.stringify(results));
+			db.pool.query("SELECT name AS customer FROM customers;", function(error, results, fields) {
+				data.push(JSON.stringify(results));
+				db.pool.query("SELECT name AS discount FROM discounts;", function(error, results, fields) {
+					data.push(JSON.stringify(results));
+					db.pool.query("SELECT name AS trade FROM professions;", function(error, results, fields) {
+						data.push(JSON.stringify(results));
+						db.pool.query("SELECT name AS item FROM items;", function(error, results, fields) {
+							data.push(JSON.stringify(results));
+							console.log(data);
+							response.status(200).send(data);
+						});
+					});
+				});
+			});
+		});
+	}
 	
-	db.pool.query(query, function(error, results, fields) {
-		response.status(200).send(JSON.stringify(results));
-	});
+	if (request.body.update == true)
+	{
+		db.pool.query(request.body.query, function(error, results, fields) {
+			db.pool.query(query, function(error, results, fields) {
+				response.status(200).send(JSON.stringify(results));
+			});
+		});
+	}
+	else if (page != 'home') {
+		db.pool.query(query, function(error, results, fields) {
+			response.status(200).send(JSON.stringify(results));
+		});
+	}
 });
 
 

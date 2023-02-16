@@ -120,3 +120,14 @@ VALUES ([villager_id-stored], (SELECT item_id FROM items WHERE name = [item_name
 UPDATE villagers 
 SET name = [name-dropdown], trade_name = [trade-dropdown], age = [age-typed], status = [status-typed],
 WHERE villager_id = (SELECT villager_id FROM villagers WHERE name = [name-dropdown]);
+
+-- -----------------------------------
+-- Horrible cache query because i am stupid
+-- -----------------------------------
+SELECT name AS villager FROM villagers;
+SELECT name AS customer FROM customers;
+SELECT name AS discount FROM discounts;
+SELECT name AS trade FROM professions;
+SELECT name AS item FROM items;
+
+		

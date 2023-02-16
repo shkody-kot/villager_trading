@@ -68,3 +68,61 @@ a {
 .footer {
 	height: 100px;
 }
+
+.button {
+	background-color: #adadad;
+	color: white;
+	font-size: 1.3vw;
+	padding: 5px 10px;
+	text-align: center;
+	margin: 10px 5px;
+	cursor: pointer;
+	border-radius: 2px;
+	border: 2px solid;
+	border-bottom-color: #848484;
+	border-right-color: #848484;
+	border-left-color: white;
+	border-top-color: white;
+	box-shadow: 5px 2px 5px #949494;
+}
+
+.button:hover {
+	background-color: #a5b6d9;
+	color: white;
+}
+
+#table td,th {
+    border: 1px solid;
+    padding: 10px;
+    table-layout: auto;
+    width: auto;
+    font-size: 20px;
+}
+
+#table td {
+    text-align: center;
+}
+
+td,th {
+    border: 1px solid;
+    padding: 5px;
+    table-layout: auto;
+    width: auto;
+    font-size: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: #d5d5d5;
+}
+
+/*tr:hover {
+    background-color: #c8ccc8;
+}*/
+
+th {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    background-color: #2f8f21;
+    color: #eee;
+}
