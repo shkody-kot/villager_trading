@@ -79,8 +79,8 @@ a {
 	cursor: pointer;
 	border-radius: 2px;
 	border: 2px solid;
-	border-bottom-color: #848484;
-	border-right-color: #848484;
+	border-bottom-color: #878787;
+	border-right-color: #878787;
 	border-left-color: white;
 	border-top-color: white;
 	box-shadow: 5px 2px 5px #949494;
@@ -90,13 +90,17 @@ a {
 	background-color: #a5b6d9;
 	color: white;
 }
+#table {
+	padding: 10px;
+}
+
 
 #table td,th {
-    border: 1px solid;
-    padding: 10px;
+    padding: 15px;
     table-layout: auto;
     width: auto;
     font-size: 20px;
+	border: none;
 }
 
 #table td {
@@ -104,11 +108,14 @@ a {
 }
 
 td,th {
-    border: 1px solid;
-    padding: 5px;
+    padding: 10px;
     table-layout: auto;
     width: auto;
     font-size: 20px;
+}
+
+tr {
+	margin: 10px;
 }
 
 tr:nth-child(even) {
