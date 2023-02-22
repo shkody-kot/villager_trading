@@ -60,7 +60,7 @@ VALUES ([name-typed], [cost-typed], [amount-typed], [trade_name-dropdown]);
 -- -----------------------------------
 UPDATE items
 SET name = [name-dropdown], cost = [cost-typed], amount = [amount-typed]
-WHERE item_id = (ELECT item_id FROM items WHERE name = [item_name-dropdown]);
+WHERE item_id = (SELECT item_id FROM items WHERE name = [item_name-dropdown]);
 
 -- -----------------------------------
 -- Delete an item
@@ -89,7 +89,7 @@ VALUES ([name-typed], [description-typed]);
 -- -----------------------------------
 INSERT INTO transactions(customer_id, villager_id, discount_id, total_price)
 VALUES ((SELECT customer_id FROM customers WHERE name = [customer_name-typed]),
-(SELECT villager_id FROM villagers WHERE name = [villager_name-dropdown]),
+(SELECT villager_id FROM villagers WHERE name = [villager_name-dropdown] OR IS NULL name),
 (SELECT discount_id FROM discounts WHERE name = [discounts-dropdown] OR IS NULL name),
 [total_price-calculated]);
 
@@ -99,11 +99,19 @@ VALUES ([transaction_id-stored], (SELECT item_id FROM items WHERE name = [item_n
 -- -----------------------------------
 -- Update an existing transaction
 -- -----------------------------------
+UPDATE transactions
+SET villager_id = (SELECT villager_id FROM villagers WHERE name = [villager_name-dropdown] OR IS NULL name),
+customer_id = (SELECT customer_id FROM customers WHERE name LIKE [customer_name-typed]%),
+discount_id = (SELECT discount_id FROM discounts WHERE name = [discounts-dropdown] OR IS NULL name),
+total_price = [total_price-typed];
+-- -----------------------------------
+-- Update an existing transaction by adding items
+-- -----------------------------------
 INSERT INTO transaction_has_items (transaction_id, item_id)
 VALUES (
 (SELECT transaction_id FROM transactions 
-	INNER JOIN villagers ON villagers.villager_id = transactions.villager_id
-	WHERE villager.name LIKE [name-typed]), 
+	INNER JOIN customers ON customers.customer_id = transactions.customer_id
+	WHERE customer.name LIKE [customer_name-typed]%), 
 (SELECT item_id FROM items WHERE name = [item_name-dropdown]), [quantity-typed]);
 
 -- -----------------------------------
