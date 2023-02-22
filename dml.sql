@@ -103,7 +103,7 @@ INSERT INTO transaction_has_items (transaction_id, item_id)
 VALUES (
 (SELECT transaction_id FROM transactions 
 	INNER JOIN villagers ON villagers.villager_id = transactions.villager_id
-	WHERE villager.name = [name-dropdown]), 
+	WHERE villager.name LIKE [name-typed]), 
 (SELECT item_id FROM items WHERE name = [item_name-dropdown]), [quantity-typed]);
 
 -- -----------------------------------

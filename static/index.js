@@ -59,7 +59,7 @@ function fill_table(data)
 	//add rows
 	for (var each_item in data)
 	{
-		var name = data[each_item].name;
+		var name = data[each_item].Name;
 		//push the first value (the name) to an array if items/profs/villagers/customers
 		if (url[1] == 'items' && !items.includes(name)) { items.push(name); localStorage.setItem("items", JSON.stringify(items));}
 		else if (url[1] == 'villagers' && !villagers.includes(name)) { villagers.push(name); localStorage.setItem("villagers", JSON.stringify(villagers));}

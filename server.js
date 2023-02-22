@@ -33,21 +33,21 @@ app.post('/tables', function(request, response) {
 	var query;
 	if (page == 'villagers')
 	{
-		query = "SELECT villagers.name, villagers.trade_name AS profession, \
-		villagers.age, villagers.status, items.name AS item \
+		query = "SELECT villagers.name AS Name, villagers.trade_name AS Profession, \
+		villagers.age AS Age, villagers.status AS Status, items.name AS Item \
 		FROM villagers \
 		INNER JOIN villager_has_items ON villagers.villager_id = villager_has_items.villager_id \
 		INNER JOIN items ON villager_has_items.item_id = items.item_id \
 		ORDER BY villagers.name DESC;";
 	}
-	else if (page == 'discounts') { query = "SELECT name, `percent` FROM discounts;"; }
-	else if (page == 'customers') { query = "SELECT name FROM customers;"; }
+	else if (page == 'discounts') { query = "SELECT name AS Name, `percent` AS `Percent` FROM discounts;"; }
+	else if (page == 'customers') { query = "SELECT name AS Name FROM customers;"; }
 	else if (page == 'professions') { query = "SELECT * FROM professions;"; }
 	else if (page == 'transactions')
 	{
-		query = "SELECT transactions.transaction_id AS Transaction, customers.name AS customer, \
-		villagers.name AS villager, discounts.name AS discount, transactions.total_price AS `Total Price`, \
-		items.name AS item, transaction_has_items.quantity AS Quantity\
+		query = "SELECT transactions.transaction_id AS Transaction, customers.name AS Customer, \
+		villagers.name AS Villager, discounts.name AS Discount, transactions.total_price AS `Total Price`, \
+		items.name AS Item, transaction_has_items.quantity AS Quantity\
 		FROM transactions \
 		LEFT JOIN discounts ON transactions.discount_id = discounts.discount_id \
 		LEFT JOIN villagers ON transactions.villager_id = villagers.villager_id \
@@ -58,7 +58,7 @@ app.post('/tables', function(request, response) {
 	}
 	else if (page == 'items')
 	{
-		query = "SELECT name, cost, amount, trade_name AS Profession FROM items \
+		query = "SELECT name AS Name, cost AS Price, amount AS Amount, trade_name AS Profession FROM items \
 		GROUP BY trade_name \
 		ORDER BY trade_name ASC;";
 	}

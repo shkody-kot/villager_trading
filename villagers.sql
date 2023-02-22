@@ -32,7 +32,7 @@ CREATE TABLE villagers (
 	age 			int NOT NULL,
 	status 			varchar(45) NOT NULL,
 	PRIMARY KEY (villager_id),
-	FOREIGN KEY (trade_name) REFERENCES professions(name)
+	FOREIGN KEY (trade_name) REFERENCES professions(name) ON DELETE RESTRICT
 );
 
 -- -----------------------------------
@@ -45,7 +45,7 @@ CREATE TABLE items (
 	amount 		int, 
 	trade_name	varchar(45) NOT NULL,
 	PRIMARY KEY (item_id),
-	CONSTRAINT fk_trades_name FOREIGN KEY (trade_name) REFERENCES professions(name)
+	CONSTRAINT fk_trades_name FOREIGN KEY (trade_name) REFERENCES professions(name) ON DELETE RESTRICT
 );
 
 -- -----------------------------------
@@ -101,8 +101,8 @@ CREATE TABLE transaction_has_items (
 	item_id			int NOT NULL,
 	quantity		int NOT NULL,
 	PRIMARY KEY (transaction_id, item_id),
-	CONSTRAINT fk_transaction_items_transaction FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id),
-	CONSTRAINT fk_transaction_items_item FOREIGN KEY (item_id) REFERENCES items(item_id)
+	CONSTRAINT fk_transaction_items_transaction FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id) ON DELETE CASCADE,
+	CONSTRAINT fk_transaction_items_item FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE CASCADE
 );
 
 -- -------------------------------------------
