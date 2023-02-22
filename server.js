@@ -33,8 +33,9 @@ app.post('/tables', function(request, response) {
 	var query;
 	if (page == 'villagers')
 	{
-		query = "SELECT villagers.name, villagers.trade_name, villagers.age, villagers.status, items.name \
-		AS item FROM villagers \
+		query = "SELECT villagers.name, villagers.trade_name AS profession, \
+		villagers.age, villagers.status, items.name AS item \
+		FROM villagers \
 		INNER JOIN villager_has_items ON villagers.villager_id = villager_has_items.villager_id \
 		INNER JOIN items ON villager_has_items.item_id = items.item_id \
 		ORDER BY villagers.name DESC;";
@@ -44,9 +45,9 @@ app.post('/tables', function(request, response) {
 	else if (page == 'professions') { query = "SELECT * FROM professions;"; }
 	else if (page == 'transactions')
 	{
-		query = "SELECT transactions.transaction_id, customers.name AS customer, \
-		villagers.name AS villager, discounts.name AS discount, transactions.total_price, \
-		items.name AS item, transaction_has_items.quantity \
+		query = "SELECT transactions.transaction_id AS Transaction, customers.name AS customer, \
+		villagers.name AS villager, discounts.name AS discount, transactions.total_price AS `Total Price`, \
+		items.name AS item, transaction_has_items.quantity AS Quantity\
 		FROM transactions \
 		LEFT JOIN discounts ON transactions.discount_id = discounts.discount_id \
 		LEFT JOIN villagers ON transactions.villager_id = villagers.villager_id \
@@ -57,7 +58,7 @@ app.post('/tables', function(request, response) {
 	}
 	else if (page == 'items')
 	{
-		query = "SELECT name, cost, amount, trade_name FROM items \
+		query = "SELECT name, cost, amount, trade_name AS Profession FROM items \
 		GROUP BY trade_name \
 		ORDER BY trade_name ASC;";
 	}
