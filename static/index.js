@@ -71,8 +71,8 @@ function fill_table(data)
 		table_data = document.createElement("tr");
 		
 		//add buttons
-		table_data.innerHTML = "<td><a href=\"#\" class=\"edit button\">Edit</a></td>"; 
-		table_data.innerHTML += "<td><a href=\"#\" class=\"delete button\">Delete</a></td>";
+		table_data.innerHTML = "<td><p class=\"edit button\">Edit</p></td>"; 
+		table_data.innerHTML += "<td><p class=\"delete button\">Delete</p></td>";
 		
 		//add columns
 		var object = data[each_item];
@@ -185,29 +185,29 @@ var edit_buttons = document.getElementsByClassName('edit');
 var delete_buttons = document.getElementsByClassName('delete');
 var submit = document.querySelectorAll('input[type=submit]');
 var update = document.getElementsByClassName('update');
-var remove = document.getElementsByClassName('delete');
+var remove = document.getElementsByClassName('remove');
 
 
 //silly goofy functions for hiding and showing things
 function hide() {
-	for(i; i < update.length; i++) {
-        update[i].className += " hidden"; 
+	for(var i = 0; i < update.length; i++) {
+        update[i].className += "hidden"; 
     }
 
-	for(i; i < remove.length; i++) {
-        remove[i].className += " hidden"; 
+	for(var i = 0; i < remove.length; i++) {
+        remove[i].className += "hidden"; 
     }
 }
 
 function unhide_update() {
-	for(i; i < update.length; i++) {
-        update[i].className -= " hidden"; 
+	for(var i = 0; i < update.length; i++) {
+		update[i].classList.toggle("hidden"); 
     }
 }
 
 function unhide_delete() {
-	for(i; i < remove.length; i++) {
-        remove[i].className -= " hidden"; 
+	for(var i = 0; i < remove.length; i++) {
+        remove[i].classList.toggle("hidden"); 
     }
 }
 
@@ -219,7 +219,7 @@ for (var i = 0; i < edit_buttons.length; i++) {
     edit_buttons[i].addEventListener('click', unhide_update);
 }
 
-for (var i = 0; i < edit_buttons.length; i++) {
-    edit_buttons[i].addEventListener('click', unhide_delete);
+for (var i = 0; i < delete_buttons.length; i++) {
+    delete_buttons[i].addEventListener('click', unhide_delete);
 }
 
