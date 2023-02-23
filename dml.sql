@@ -137,5 +137,6 @@ SELECT name AS customer FROM customers;
 SELECT name AS discount FROM discounts;
 SELECT name AS trade FROM professions;
 SELECT name AS item FROM items;
+SELECT transaction_id AS transaction FROM transactions;
 
 		
