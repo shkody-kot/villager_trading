@@ -1,10 +1,11 @@
 var url = window.location.pathname.split('/');
-//store some data (item names, villager names, trade names, customer names) for dropdown purposes
+//store some data (item names, villager names, trade names, customer names, transactions) for dropdown purposes
 var items = [];
 var villagers = [];
 var trades = [];
 var customers = [];
 var discounts = [];
+var transactions = [];
 
 if (url[1] == "") { document.addEventListener( "DOMContentLoaded", fetch_data('home', false, null, fill_cache), false); }
 else { document.addEventListener( "DOMContentLoaded", fetch_data(url[1], false, null, fill_table), false); }
@@ -60,7 +61,7 @@ function fill_table(data)
 	for (var each_item in data)
 	{
 		var name = data[each_item].Name;
-		//push the first value (the name) to an array if items/profs/villagers/customers
+		//push the first value (the name) to an array if items/profs/villagers/customers/transactions
 		if (url[1] == 'items' && !items.includes(name)) { items.push(name); localStorage.setItem("items", JSON.stringify(items));}
 		else if (url[1] == 'villagers' && !villagers.includes(name)) { villagers.push(name); localStorage.setItem("villagers", JSON.stringify(villagers));}
 		else if (url[1] == 'customers' && !customers.includes(name)) { customers.push(name); localStorage.setItem("customers", JSON.stringify(customers));}
@@ -110,6 +111,8 @@ function fill_cache(data)
 	array2 = JSON.parse(data[2]);
 	array3 = JSON.parse(data[3]);
 	array4 = JSON.parse(data[4]);
+	array5 = JSON.parse(data[5]);
+	
 	for (var i in array0)
 	{
 		console.log(array0[i].villager);
@@ -131,6 +134,10 @@ function fill_cache(data)
 	{
 		if (!items.includes(array4[i].item)) { items.push(array4[i].item); }
 	}
+	for (var i in array5)
+	{
+		if (!transactions.includes(array5[i].transaction)) { transactions.push(array5[i].transaction); }
+	}
 	
 	//cache them!
 		localStorage.setItem("items", JSON.stringify(items));
@@ -138,6 +145,7 @@ function fill_cache(data)
 		localStorage.setItem("customers", JSON.stringify(customers));
 		localStorage.setItem("trades", JSON.stringify(trades));
 		localStorage.setItem("discounts", JSON.stringify(discounts));
+		localStorage.setItem("transactions", JSON.stringify(transactions));
 	
 	return;
 }
@@ -148,6 +156,7 @@ var item = document.getElementById("item");
 var customer = document.getElementById("customer");
 var discount = document.getElementById("discount");
 var profession = document.getElementById("profession-update");
+var transaction = document.getElementById("transaction");
 
 if (villager)
 {
@@ -158,17 +167,59 @@ if (villager)
 }
 if (item) 
 { 
-	fill_dropdown("item", 'items'); 
-	if (url[1] == 'items') { fill_dropdown("item-remove", 'items'); }
+	fill_dropdown("item", 'items')
+	if (url[1] == 'items') { 
+		fill_dropdown("item-remove", 'items'); }
+	else if (url[1] == 'transactions' || url[1] == 'villagers') {
+		fill_dropdown("item-update", 'items');
+	}
 	//if (url[1] == 'items') { fill_dropdown("item", "name"); fill_dropdown("item-remove", "name"); }
 	//else { fill_dropdown("item", "item"); }
 }
 if (customer) { fill_dropdown("customer", 'customers'); }
 if (discount) { fill_dropdown("discount", 'discounts'); }
 if (profession) { fill_dropdown("profession-update", 'trades'); }
+if (transaction) { fill_dropdown("transaction", 'transactions'); }
 
 var edit_buttons = document.getElementsByClassName('edit');
 var delete_buttons = document.getElementsByClassName('delete');
-	
+var submit = document.querySelectorAll('input[type=submit]');
+var update = document.getElementsByClassName('update');
+var remove = document.getElementsByClassName('delete');
 
+
+//silly goofy functions for hiding and showing things
+function hide() {
+	for(i; i < update.length; i++) {
+        update[i].className += " hidden"; 
+    }
+
+	for(i; i < remove.length; i++) {
+        remove[i].className += " hidden"; 
+    }
+}
+
+function unhide_update() {
+	for(i; i < update.length; i++) {
+        update[i].className -= " hidden"; 
+    }
+}
+
+function unhide_delete() {
+	for(i; i < remove.length; i++) {
+        remove[i].className -= " hidden"; 
+    }
+}
+
+for (var i = 0; i < submit.length; i++) {
+    submit[i].addEventListener('click', hide);
+}
+
+for (var i = 0; i < edit_buttons.length; i++) {
+    edit_buttons[i].addEventListener('click', unhide_update);
+}
+
+for (var i = 0; i < edit_buttons.length; i++) {
+    edit_buttons[i].addEventListener('click', unhide_delete);
+}
 

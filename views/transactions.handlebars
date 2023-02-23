@@ -21,20 +21,33 @@
 		
         <label for="price">Total Price:</label><br>
         <input type="text" id="price" name="price"><br>
-    </form>
-
-    <img src="/construction2.png" class="tablesub">
-    <p>Add item to transaction:</p>
-    <form>
-        <label for="trans">Choose a transaction to update:</label><br>
-        <select id="villager-update" name="trans">
-        </select><br>
-		
+        
+        <p>Add item to transaction:</p>
         <label for="item">Choose an item to add:</label><br>
         <select id="item" name="item">
         </select><br>
 		
         <label for="num">Enter the number of items:</label><br>
         <input type="text" id="num" name="num"><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <img src="/construction2.png" class="tablesub">
+    <form class="update">
+        <p>Add item to transaction:</p>
+        <label for="trans">Choose a transaction to update:</label><br>
+        <input type="text" placeholder="Filter by customer..."><br>
+        <select id="transaction" name="transaction">
+        </select><br>
+        <select id="villager-update" name="trans">
+        </select><br>
+		
+        <label for="item">Choose an item to add:</label><br>
+        <select id="item-update" name="item">
+        </select><br>
+		
+        <label for="num">Enter the number of items:</label><br>
+        <input type="text" id="num" name="num"><br>
+        <input type="submit" value="Submit">
     </form>
 </center>

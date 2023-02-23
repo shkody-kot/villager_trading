@@ -42,7 +42,7 @@ app.post('/tables', function(request, response) {
 	}
 	else if (page == 'discounts') { query = "SELECT name AS Name, `percent` AS `Percent` FROM discounts;"; }
 	else if (page == 'customers') { query = "SELECT name AS Name FROM customers;"; }
-	else if (page == 'professions') { query = "SELECT * FROM professions;"; }
+	else if (page == 'professions') { query = "SELECT name AS 'Name', description AS 'Description' FROM professions;"; }
 	else if (page == 'transactions')
 	{
 		query = "SELECT transactions.transaction_id AS Transaction, customers.name AS Customer, \
@@ -75,8 +75,11 @@ app.post('/tables', function(request, response) {
 						data.push(JSON.stringify(results));
 						db.pool.query("SELECT name AS item FROM items;", function(error, results, fields) {
 							data.push(JSON.stringify(results));
-							console.log(data);
-							response.status(200).send(data);
+							db.pool.query("SELECT transaction_id AS transaction FROM transactions;", function(error, results, fields) {
+								data.push(JSON.stringify(results));
+								console.log(data);
+								response.status(200).send(data);
+							});
 						});
 					});
 				});

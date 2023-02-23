@@ -18,12 +18,31 @@
         <input type="text" id="age" name="age"><br>
 		
         <label for="status">Villager Status:</label><br>
-        <input type="text" id="status" name="status"><br>       
+        <input type="text" id="status" name="status"><br>   
+
+        <label for="item">Choose an item to add:</label><br>
+        <select id="item" name="item">
+        </select><br>
+            
+        <input type="submit" value="Submit">
+        
+    </form>
+
+    <img src="/construction1.png" class="tablesub">
+        <form class="update">
+        <p>Add item to villager:</p>
+        <label for="name">Choose an villager to update:</label><br>
+        <select id="villager-update" name="name">
+        </select><br>
+		
+        <label for="item">Choose an item to add:</label><br>
+        <select id="item-update" name="item">
+        </select><br>
         <input type="submit" value="Submit">
     </form>
     
-    <p>Update existing villager:</p>
-    <form>
+    <form class="update">
+        <p>Update existing villager:</p>
         <label for="name">Choose an villager to update:</label><br>
         <select id="villager-new" name="name">
         </select><br>
@@ -40,15 +59,5 @@
         <input type="submit" value="Submit">
     </form>
 
-    <img src="/construction1.png" class="tablesub">
-    <p>Add item to villager:</p>
-    <form>
-        <label for="name">Choose an villager to update:</label><br>
-        <select id="villager-update" name="name">
-        </select><br>
-		
-        <label for="item">Choose an item to add:</label><br>
-        <select id="item" name="item">
-        </select><br>
-    </form>
+    
 </center>
