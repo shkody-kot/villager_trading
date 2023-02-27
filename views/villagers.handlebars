@@ -7,7 +7,7 @@
 	</table>
 	
     <p>Add a new villager:</p>
-    <form>
+    <form class="insert" id="add-villager">
         <label for="name">Villager Name:</label><br>
         <input type="text" id="name" name="name"><br>
 		
@@ -29,7 +29,7 @@
     </form>
 
     
-    <form class="update hidden">
+    <form class="update hidden" id="add-item">
         <p>Add item to villager:</p>
         <label for="name">Choose an villager to update:</label><br>
         <select id="villager-update" name="name">
@@ -41,7 +41,7 @@
         <input type="submit" value="Submit">
     </form>
     
-    <form class="update hidden">
+    <form class="update hidden" id="update-villager">
         <p>Update existing villager:</p>
         <label for="name">Choose an villager to update:</label><br>
         <select id="villager-new" name="name">

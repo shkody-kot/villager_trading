@@ -162,8 +162,6 @@ if (villager)
 {
 	fill_dropdown("villager-new", 'villagers'); 
 	fill_dropdown("villager-update", 'villagers');
-	//if (url[1] == 'villagers') { fill_dropdown("villager-new", "name"); fill_dropdown("villager-update", "name"); }
-	//else { fill_dropdown("villager-new", "villager"); fill_dropdown("villager-update", "villager"); }
 }
 if (item) 
 { 
@@ -173,8 +171,6 @@ if (item)
 	else if (url[1] == 'transactions' || url[1] == 'villagers') {
 		fill_dropdown("item-update", 'items');
 	}
-	//if (url[1] == 'items') { fill_dropdown("item", "name"); fill_dropdown("item-remove", "name"); }
-	//else { fill_dropdown("item", "item"); }
 }
 if (customer) { fill_dropdown("customer", 'customers'); }
 if (discount) { fill_dropdown("discount", 'discounts'); }
@@ -223,3 +219,54 @@ for (var i = 0; i < delete_buttons.length; i++) {
     delete_buttons[i].addEventListener('click', unhide_delete);
 }
 
+//handling for inserting or updating data into tables
+if (url[1] == 'villagers')
+{
+	//add a new villager
+	var add_villager = document.getElementById('add-villager');
+	add_villager.addEventListener('submit', function(event){
+		event.preventDefault();
+		var form_data = new FormData(document.querySelector('form'));
+		
+		var name = form_data.get('name');
+		var profession = form_data.get('profession');
+		var age = form_data.get('age');
+		var status = form_data.get('status');
+		var item = form_data.get('item');
+		
+		console.log("name: " + name);
+		var query = "INSERT INTO villagers (name, trade_name, age, status) VALUES ( '" + name + "', (SELECT name FROM professions WHERE name = '" + profession + "'), '" + age + "', '" + status + "');";
+		var query2 = "INSERT INTO villager_has_items (villager_id, item_id) VALUES ((SELECT villager_id FROM villagers WHERE name = '" + name + "'), (SELECT item_id FROM items WHERE name = '" + item + "'));"; 
+		
+		fetch_data(url[1], true, query, fill_table);
+		fetch_data(url[1], true, query2, fill_table);
+	});
+	
+	//update an existing villager
+	var update_villager = document.getElementById('update-villager');
+	update_villager.addEventListener('submit', function(event){
+		event.preventDefault();
+		var form_data = new FormData(document.getElementById('update-villager'));
+		
+		var name = form_data.get('name');		
+		var profession = form_data.get('profession');
+		var age = form_data.get('age');
+		var status = form_data.get('status');
+		
+		var query = "UPDATE villagers SET name = '" + name + "', trade_name = (SELECT name FROM professions WHERE name = '" + profession + "'), age = '" + age + "', status = '" + status + "' WHERE villager_id = (SELECT villager_id FROM villagers WHERE name = '" + name + "');";
+		fetch_data(url[1], true, query, fill_table);
+	});
+	
+	//add item to a villager
+	var add_item = document.getElementById('add-item');
+	add_item.addEventListener('submit', function(event){
+		event.preventDefault();
+		var form_data = new FormData(document.getElementById('add-item'));
+		
+		var name = form_data.get('name');		
+		var item = form_data.get('item');
+		
+		var query = "INSERT INTO villager_has_items (villager_id, item_id) VALUES ((SELECT villager_id FROM villagers WHERE name = '" + name + "'), (SELECT item_id FROM items WHERE name = '" + item + "'));";
+		fetch_data(url[1], true, query, fill_table);
+	});
+}
