@@ -28,7 +28,7 @@ CREATE TABLE professions (
 CREATE TABLE villagers (
 	villager_id 	int NOT NULL AUTO_INCREMENT,
 	trade_name 		varchar(45) NOT NULL,	
-    name			varchar(45) NOT NULL,
+    name			varchar(45) NOT NULL UNIQUE,
 	age 			int NOT NULL,
 	status 			varchar(45) NOT NULL,
 	PRIMARY KEY (villager_id),
