@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <center>
     <div></div>
-    <img src="/construction3.png" class="tablesub">
-	
 	<table border="1" cellpadding="5" id="table">
 	</table>
 	
@@ -57,8 +55,12 @@
         <label for="status">Villager Status:</label><br>
         <input type="text" id="status" name="status"><br>  
         <input type="submit" value="Submit">
-    </form>
-    <img src="/construction1.png" class="tablesub">
 
-    
+    </form>
+    <form class="remove hidden" id="remove-villager">
+        <label for="remove">Choose an villager to remove:</label><br>
+        <select id="villager-remove" name="name">
+        </select><br>
+        <input type="submit" value="Submit">
+    </form>
 </center>

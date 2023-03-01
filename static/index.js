@@ -150,6 +150,12 @@ function fill_cache(data)
 	return;
 }
 
+window.addEventListener('load',function() {
+	var scroll = document.getElementById("scrolldiv").offsetTop;
+    if(localStorage.getItem('scrollPosition') !== null)
+       window.scrollTo({top: scroll, behavior: 'smooth'});
+},false);
+
 //main operations
 var villager = document.getElementById("villager-new");
 var item = document.getElementById("item");
@@ -162,6 +168,7 @@ if (villager)
 {
 	fill_dropdown("villager-new", 'villagers'); 
 	fill_dropdown("villager-update", 'villagers');
+	fill_dropdown("villager-remove", 'villagers');
 }
 if (item) 
 { 
@@ -255,6 +262,7 @@ if (url[1] == 'villagers')
 		
 		var query = "UPDATE villagers SET name = '" + name + "', trade_name = (SELECT name FROM professions WHERE name = '" + profession + "'), age = '" + age + "', status = '" + status + "' WHERE villager_id = (SELECT villager_id FROM villagers WHERE name = '" + name + "');";
 		fetch_data(url[1], true, query, fill_table);
+		location.reload()
 	});
 	
 	//add item to a villager
@@ -268,5 +276,16 @@ if (url[1] == 'villagers')
 		
 		var query = "INSERT INTO villager_has_items (villager_id, item_id) VALUES ((SELECT villager_id FROM villagers WHERE name = '" + name + "'), (SELECT item_id FROM items WHERE name = '" + item + "'));";
 		fetch_data(url[1], true, query, fill_table);
+		location.reload()
+	});
+
+	//delete villager
+	var delete_item = document.getElementById('remove-villager');
+	delete_item.addEventListener('submit', function(event) {
+		var form_data = new FormData(document.getElementById('remove-villager'));		
+		var name = form_data.get('name');	
+		var query = "DELETE FROM villagers WHERE villager_id = (SELECT villager_id FROM villagers WHERE name = '" + name + "');";
+		fetch_data(url[1], true, query, fill_table);
+		location.reload()
 	});
 }
