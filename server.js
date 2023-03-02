@@ -13,7 +13,7 @@ var app = express();
 app.use(express.static(__dirname + '/static'));
 app.use(express.json());
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 30000;
 
 
 //set server to use handlebars templates
@@ -36,7 +36,7 @@ app.post('/tables', function(request, response) {
 		query = "SELECT villagers.name AS Name, villagers.trade_name AS Profession, \
 		villagers.age AS Age, villagers.status AS Status, items.name AS Item \
 		FROM villagers \
-		INNER JOIN villager_has_items ON villagers.villager_id = villager_has_items.villager_id \
+		LEFT JOIN villager_has_items ON villagers.villager_id = villager_has_items.villager_id \
 		INNER JOIN items ON villager_has_items.item_id = items.item_id \
 		ORDER BY villagers.name DESC;";
 	}
@@ -91,8 +91,11 @@ app.post('/tables', function(request, response) {
 	// update if there is new information
 	if (request.body.update == true)
 	{
+		console.log(request.body.query);
 		db.pool.query(request.body.query, function(error, results, fields) {
+			console.log(results);
 			db.pool.query(query, function(error, results, fields) {
+				console.log(results);
 				response.status(200).send(JSON.stringify(results));
 			});
 		});
