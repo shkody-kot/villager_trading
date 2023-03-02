@@ -26,7 +26,7 @@ app.engine('handlebars', hbs.engine({
 	partialsDir: path.join(__dirname, '/views/partials')
 }));
 
-//Server POST requests
+//Server POST requests for displaying tables
 app.post('/tables', function(request, response) {
 	var page = request.body.url;
 	console.log(page);
@@ -62,6 +62,7 @@ app.post('/tables', function(request, response) {
 		GROUP BY trade_name \
 		ORDER BY trade_name ASC;";
 	}
+	// if page is home, load all queries
 	else if (page == 'home')
 	{
 		data = [];
@@ -86,7 +87,8 @@ app.post('/tables', function(request, response) {
 			});
 		});
 	}
-	
+
+	// update if there is new information
 	if (request.body.update == true)
 	{
 		db.pool.query(request.body.query, function(error, results, fields) {

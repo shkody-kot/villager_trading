@@ -10,7 +10,7 @@ var transactions = [];
 if (url[1] == "") { document.addEventListener( "DOMContentLoaded", fetch_data('home', false, null, fill_cache), false); }
 else { document.addEventListener( "DOMContentLoaded", fetch_data(url[1], false, null, fill_table), false); }
 
-
+// fetch information + query and post
 function fetch_data(url, update, query, next)
 {
 	//for page
@@ -33,6 +33,7 @@ function fetch_data(url, update, query, next)
 	xmlhttp.send(JSON.stringify(object));
 }
 
+// fill table with information from database
 function fill_table(data)
 {
 	var table = document.getElementById("table");
@@ -86,6 +87,7 @@ function fill_table(data)
 	}
 }
 
+// fill dropdown menu with information from a given category
 function fill_dropdown(id, category)
 {
 	var dropdown = document.getElementById(id);
@@ -104,6 +106,8 @@ function fill_dropdown(id, category)
 	return;
 }
 
+
+// fill the cache (for use in dropdowns later)
 function fill_cache(data)
 {
 	array0 = JSON.parse(data[0]);
@@ -150,13 +154,14 @@ function fill_cache(data)
 	return;
 }
 
+// scroll down to table page upon load
 window.addEventListener('load',function() {
 	var scroll = document.getElementById("scrolldiv").offsetTop;
     if(localStorage.getItem('scrollPosition') !== null)
        window.scrollTo({top: scroll, behavior: 'smooth'});
 },false);
 
-//main operations
+// fill dropdown tables with data from tables
 var villager = document.getElementById("villager-new");
 var item = document.getElementById("item");
 var customer = document.getElementById("customer");
@@ -179,11 +184,14 @@ if (item)
 		fill_dropdown("item-update", 'items');
 	}
 }
+
 if (customer) { fill_dropdown("customer", 'customers'); }
 if (discount) { fill_dropdown("discount", 'discounts'); }
 if (profession) { fill_dropdown("profession-update", 'trades'); }
 if (transaction) { fill_dropdown("transaction", 'transactions'); }
 
+
+//select buttons/forms to show/hide buttons on click
 var edit_buttons = document.getElementsByClassName('edit');
 var delete_buttons = document.getElementsByClassName('delete');
 var submit = document.querySelectorAll('input[type=submit]');
@@ -191,7 +199,7 @@ var update = document.getElementsByClassName('update');
 var remove = document.getElementsByClassName('remove');
 
 
-//silly goofy functions for hiding and showing things
+//functions to show add/delete modals on click
 function hide() {
 	for(var i = 0; i < update.length; i++) {
         update[i].className += "hidden"; 
@@ -226,7 +234,7 @@ for (var i = 0; i < delete_buttons.length; i++) {
     delete_buttons[i].addEventListener('click', unhide_delete);
 }
 
-//handling for inserting or updating data into tables
+//handling for inserting, updating, or deleting data into/from villager table
 if (url[1] == 'villagers')
 {
 	//add a new villager

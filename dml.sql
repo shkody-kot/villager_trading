@@ -130,7 +130,7 @@ SET name = [name-dropdown], trade_name = [trade-dropdown], age = [age-typed], st
 WHERE villager_id = (SELECT villager_id FROM villagers WHERE name = [name-dropdown]);
 
 -- -----------------------------------
--- Horrible cache query because i am stupid
+-- Cache query for dropdowns
 -- -----------------------------------
 SELECT name AS villager FROM villagers;
 SELECT name AS customer FROM customers;
