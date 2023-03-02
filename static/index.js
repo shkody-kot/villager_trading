@@ -255,6 +255,7 @@ if (url[1] == 'villagers')
 		
 		fetch_data(url[1], true, query, fill_table);
 		fetch_data(url[1], true, query2, fill_table);
+		location.reload()
 	});
 	
 	//update an existing villager
