@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<center>
-    <img src="/construction1.png" class="tablesub">
-	
+<center>	
 	<table border="1" cellpadding="5" id="table">
 	</table>
 	
     <p>Add a new transaction:</p>
-    <form>
+    <form class="insert" id="add-transaction">
         <label for="villager">Villager:</label><br>
         <select id="villager-new" name="villager">
         </select><br>
@@ -49,6 +47,5 @@
         <input type="text" id="num" name="num"><br>
         <input type="submit" value="Submit">
     </form>
-
-    <img src="/construction2.png" class="tablesub">
 </center>
+<script src="/transactions.js" charset="utf-8" defer></script>
