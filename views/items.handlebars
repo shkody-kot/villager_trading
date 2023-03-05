@@ -15,11 +15,12 @@
         <input type="text" id="amount" name="amount"><br>
 
         <label for="profession">Profession:</label><br>
-        <input type="text" id="profession" name="profession"><br>
+        <select id="profession-add" name="profession">
+        </select><br>
         <input type="submit" value="Submit">
     </form>
 
-    <form class="update hidden">
+    <form class="update hidden" id="update-item">
         <p>Update existing item:</p>
         <label for="name">Choose an item to update:</label><br>
         <select id="item" name="name">
@@ -31,16 +32,18 @@
         <label for="amount">Number in stock:</label><br>
         <input type="text" id="number" name="number"><br>
 
-        <label for="profession">Profession:</label><br>
-        <input type="text" id="profession" name="profession"><br>
+        <label for="profession">Villager Profession:</label><br>
+        <select id="profession-update" name="profession">
+        </select><br>
         <input type="submit" value="Submit">
     </form>
 
-    <form class="remove hidden">
+    <form class="remove hidden" id="delete-item">
         <p>Remove existing item:</p>
         <label for="name">Choose an item to remove:</label><br>
         <select id="item-remove" name="name">
         </select><br>
         <input type="submit" value="Submit">
+	</form>
 </center>
 <script src="/items.js" charset="utf-8" defer></script>

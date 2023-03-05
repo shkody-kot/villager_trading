@@ -173,22 +173,32 @@ if (villager)
 {
 	fill_dropdown("villager-new", 'villagers'); 
 	fill_dropdown("villager-update", 'villagers');
-    if (url[1] == 'villagers') {
-        fill_dropdown("villager-remove", 'villagers');
-    }	
+    if (url[1] == 'villagers') { fill_dropdown("villager-remove", 'villagers'); }	
 }
 
 if (item) 
 { 
 	fill_dropdown("item", 'items')
-	if (url[1] == 'items') { 
-		fill_dropdown("item-remove", 'items'); }
-	else if (url[1] == 'transactions' || url[1] == 'villagers') {
-		fill_dropdown("item-update", 'items');
-	}
+	if (url[1] == 'items') { fill_dropdown("item-remove", 'items'); }
+	else if (url[1] == 'transactions' || url[1] == 'villagers') { fill_dropdown("item-update", 'items'); }
 }
 
-if (customer) { fill_dropdown("customer", 'customers'); }
-if (discount) { fill_dropdown("discount", 'discounts'); }
-if (profession) { fill_dropdown("profession-update", 'trades'); }
+if (customer) 
+{ 
+	fill_dropdown("customer", 'customers');
+	if (url[1] == 'customers') { fill_dropdown("customer-remove", 'customers'); }
+}
+
+if (discount) 
+{ 
+	fill_dropdown("discount", 'discounts');
+	if (url[1] == 'discounts') { fill_dropdown('discount-remove', 'discounts'); }
+}
+
+if (profession) 
+{ 
+	fill_dropdown("profession-update", 'trades'); 
+	if (url[1] == 'professions') { fill_dropdown("profession-remove", 'trades'); }
+	else if (url[1] == 'items' || url[1] == 'villagers') { fill_dropdown("profession-add", 'trades'); }
+}
 if (transaction) { fill_dropdown("transaction", 'transactions'); }

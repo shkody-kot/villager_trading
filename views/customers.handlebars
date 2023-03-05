@@ -9,5 +9,23 @@
         <input type="text" id="name" name="name"><br>   
         <input type="submit" value="Submit">
     </form>
+	
+	<form form class="update hidden" id="update-customer">
+        <label for="customer">Customer to update:</label><br>
+        <select id="customer" name="name">
+        </select><br>
+		<label for="name">New Customer Name:</label><br>
+        <input type="text" id="name" name="new-name"><br> 
+        <input type="submit" value="Submit">
+    </form>
+	
+	
+	<form class="remove hidden" id="delete-customer">
+        <p>Remove existing customer:</p>
+        <label for="name">Choose a customer to remove:</label><br>
+        <select id="customer-remove" name="name">
+        </select><br>
+        <input type="submit" value="Submit">
+	</form>
 </center>
 <script src="/customers.js" charset="utf-8" defer></script>

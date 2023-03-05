@@ -12,5 +12,25 @@
         <input type="text" id="percent" name="percent"><br>
         <input type="submit" value="Submit">
     </form>
+	
+	<form class="update hidden" id="update-discount">
+        <p>Update a discount:</p>
+        <label for="name">Choose a discount to update:</label><br>
+        <select id="discount" name="name">
+        </select><br>
+		
+        <label for="percent">Discount Percent:</label><br>
+        <input type="text" id="percent" name="percent"><br>
+        </select><br>
+        <input type="submit" value="Submit">
+    </form>
+	
+	<form class="remove hidden" id="delete-discount">
+        <p>Remove existing discount:</p>
+        <label for="name">Choose a discount to remove:</label><br>
+        <select id="discount-remove" name="name">
+        </select><br>
+        <input type="submit" value="Submit">
+	</form>
 </center>
 <script src="/discounts.js" charset="utf-8" defer></script>
