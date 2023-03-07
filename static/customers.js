@@ -3,7 +3,8 @@ add_customer.addEventListener('submit', function(event){
     event.preventDefault();
     var form_data = new FormData(document.getElementById('add-customer'));
     
-    var name = form_data.get('name');		
+    var name = form_data.get('name');	
+	if (!validate(name)) { return; }	
     
     var query = `INSERT INTO customers (name) VALUES ('${name}');`;
     fetch_data(url[1], true, query, fill_table);
@@ -18,6 +19,7 @@ update_customer.addEventListener('submit', function(event){
     
     var name = form_data.get('name');
 	var new_name = form_data.get('new-name');
+	if (!validate(new_name) || !validate(name)) { return; }
 	
 	var query = `UPDATE customers SET name = '${new_name}' WHERE customer_id = (SELECT customer_id FROM customers WHERE name = '${name}');`;
 	fetch_data(url[1], true, query, fill_table);

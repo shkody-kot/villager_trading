@@ -9,6 +9,8 @@ add_villager.addEventListener('submit', function(event){
     var age = form_data.get('age');
     var status = form_data.get('status');
     var item = form_data.get('item');
+	
+	if (!validate(name) || !validate(status)) { return; }
     
     console.log("name: " + name);
     var query = "INSERT INTO villagers (name, trade_name, age, status) VALUES ( '" + name + "', (SELECT name FROM professions WHERE name = '" + profession + "'), '" + age + "', '" + status + "');";
@@ -29,6 +31,8 @@ update_villager.addEventListener('submit', function(event){
     var profession = form_data.get('profession');
     var age = form_data.get('age');
     var status = form_data.get('status');
+	
+	if (!validate(name) || !validate(status)) { return; }
     
     var query = "UPDATE villagers SET name = '" + name + "', trade_name = (SELECT name FROM professions WHERE name = '" + profession + "'), age = '" + age + "', status = '" + status + "' WHERE villager_id = (SELECT villager_id FROM villagers WHERE name = '" + name + "');";
     fetch_data(url[1], true, query, fill_table);

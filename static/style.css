@@ -31,6 +31,17 @@ input[type=text] {
 	border-radius: 4px;
 	margin: 5px;
 }
+
+input[type=number] {
+	font-size: 1.3vw;
+	background-color: white;
+	border: none;
+	padding: 10px 5px;
+	width: 14.25%;
+	border-radius: 4px;
+	margin: 5px;
+}
+
 input[type=text]:focus {
 	border: none;
 	outline: none;
@@ -136,6 +147,7 @@ a {
 	color: white;
 }
 #table {
+	margin: 10px;
 	padding: 10px;
 }
 

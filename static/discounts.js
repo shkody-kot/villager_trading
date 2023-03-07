@@ -6,6 +6,8 @@ add_discount.addEventListener('submit', function(event){
     
     var name = form_data.get('name');		
     var percent = form_data.get('percent');
+	
+	if (!validate(name)) { return; }
     
     var query = `INSERT INTO discounts (name, percent) VALUES ('${name}', ${percent});`;
     fetch_data(url[1], true, query, fill_table);

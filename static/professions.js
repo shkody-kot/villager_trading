@@ -5,6 +5,8 @@ add_profession.addEventListener('submit', function(event){
     
     var name = form_data.get('name');		
     var description = form_data.get('desc');
+	
+	if (!validate(name) || !validate(description)) { return; }
     
     var query = `INSERT INTO professions (name, description) VALUES ('${name}', '${description}');`;
     fetch_data(url[1], true, query, fill_table);
@@ -19,6 +21,8 @@ update_profession.addEventListener('submit', function(event){
     
     var name = form_data.get('name');		
     var description = form_data.get('description');
+	
+	if (!validate(description)) { return; }
 	
 	var query = `UPDATE professions SET description = '${description}' WHERE name = '${name}';`;
 	fetch_data(url[1], true, query, fill_table);

@@ -40,3 +40,8 @@ for (var i = 0; i < delete_buttons.length; i++) {
     delete_buttons[i].addEventListener('click', unhide_delete);
 }
 
+function validate(datafield)
+{
+	if (!datafield) { alert("fields cannot be empty"); return false; }
+	if (datafield.includes("'")) { alert("fields cannot contain single quotes"); return false; }
+}
