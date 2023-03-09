@@ -201,4 +201,8 @@ if (profession)
 	if (url[1] == 'professions') { fill_dropdown("profession-remove", 'trades'); }
 	else if (url[1] == 'items' || url[1] == 'villagers') { fill_dropdown("profession-add", 'trades'); }
 }
-if (transaction) { fill_dropdown("transaction", 'transactions'); }
+if (transaction) 
+{ 
+	fill_dropdown("transaction", 'transactions'); 
+	fill_dropdown("transaction-remove", "transactions");
+}
