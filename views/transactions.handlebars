@@ -2,7 +2,13 @@
 <center>	
 	<table border="1" cellpadding="5" id="table">
 	</table>
-	
+
+    <form id="search-person-html" method='GET' action='/transactions'>
+    <label for="input-customer">Filter by Customer: </label><br>
+    <input type="text" name="customersearch" id="input-customer-html-search"><br>
+    <input type="submit"><br>
+    <a href='/transactions'><button class="button">Reset</button></a>
+
     <p>Add a new transaction:</p>
     <form class="insert" id="add-transaction">
         <label for="villager">Villager:</label><br>
@@ -35,8 +41,6 @@
     <form class="update hidden" id="add-item">
         <p>Add item to transaction:</p>
         <label for="trans">Choose a transaction to update:</label><br>
-        <input type="text" placeholder="Filter by customer..."><br>
-        <select id="transaction" name="transaction">
         </select><br>
         <select id="villager-update" name="trans">
         </select><br>

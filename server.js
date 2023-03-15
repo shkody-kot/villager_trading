@@ -8,6 +8,7 @@ var db = require('./connector');
 
 //create application
 var app = express();
+var query_cust;
 
 //includes all the funky little css and js files
 app.use(express.static(__dirname + '/static'));
@@ -33,6 +34,7 @@ app.post('/tables', function(request, response) {
 	var query;
 	if (page == 'villagers')
 	{
+		
 		query = "SELECT villagers.name AS Name, villagers.trade_name AS Profession, \
 		villagers.age AS Age, villagers.status AS Status, items.name AS Item \
 		FROM villagers \
@@ -45,16 +47,34 @@ app.post('/tables', function(request, response) {
 	else if (page == 'professions') { query = "SELECT name AS 'Name', description AS 'Description' FROM professions;"; }
 	else if (page == 'transactions')
 	{
-		query = "SELECT transactions.transaction_id AS Transaction, customers.name AS Customer, \
-		villagers.name AS Villager, discounts.name AS Discount, transactions.total_price AS `Total Price`, \
-		items.name AS Item, transaction_has_items.quantity AS Quantity\
-		FROM transactions \
-		LEFT JOIN discounts ON transactions.discount_id = discounts.discount_id \
-		LEFT JOIN villagers ON transactions.villager_id = villagers.villager_id \
-		LEFT JOIN customers ON transactions.customer_id = customers.customer_id \
-		LEFT JOIN transaction_has_items ON transactions.transaction_id = transaction_has_items.transaction_id \
-		LEFT JOIN items ON transaction_has_items.item_id = items.item_id \
-		ORDER BY transactions.transaction_id ASC;";
+		
+		if (query_cust === undefined) {
+			query = "SELECT transactions.transaction_id AS Transaction, customers.name AS Customer, \
+			villagers.name AS Villager, discounts.name AS Discount, transactions.total_price AS `Total Price`, \
+			items.name AS Item, transaction_has_items.quantity AS Quantity\
+			FROM transactions \
+			LEFT JOIN discounts ON transactions.discount_id = discounts.discount_id \
+			LEFT JOIN villagers ON transactions.villager_id = villagers.villager_id \
+			LEFT JOIN customers ON transactions.customer_id = customers.customer_id \
+			LEFT JOIN transaction_has_items ON transactions.transaction_id = transaction_has_items.transaction_id \
+			LEFT JOIN items ON transaction_has_items.item_id = items.item_id \
+			ORDER BY transactions.transaction_id ASC;";
+		}
+		else {
+			query = `SELECT transactions.transaction_id AS Transaction, customers.name AS Customer, \
+			villagers.name AS Villager, discounts.name AS Discount, transactions.total_price AS 'Total Price', \
+			items.name AS Item, transaction_has_items.quantity AS Quantity\
+			FROM transactions \
+			LEFT JOIN discounts ON transactions.discount_id = discounts.discount_id \
+			LEFT JOIN villagers ON transactions.villager_id = villagers.villager_id \
+			LEFT JOIN customers ON transactions.customer_id = customers.customer_id \
+			LEFT JOIN transaction_has_items ON transactions.transaction_id = transaction_has_items.transaction_id \
+			LEFT JOIN items ON transaction_has_items.item_id = items.item_id \
+			WHERE customers.name LIKE "${query_cust}%"\
+			ORDER BY transactions.transaction_id ASC;`;
+			console.log(query);
+		}
+		
 	}
 	else if (page == 'items')
 	{
@@ -131,6 +151,7 @@ app.get('/professions', function (request, response) {
 
 app.get('/transactions', function (request, response) {
 	response.status(200).render('transactions', { layout: 'main', active: {Transactions: true } });
+	query_cust = request.query.customersearch;
 });
 
 
