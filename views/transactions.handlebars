@@ -38,6 +38,10 @@
         <input type="submit" value="Submit">
     </form>
 
+    <div class="modal update">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+
     <form class="update hidden" id="add-item">
         <p>Add item to transaction:</p>
         <label for="trans">Choose a transaction to update:</label><br>
@@ -53,7 +57,12 @@
         <input type="number" min="1" id="num" name="num"><br>
         <input type="submit" value="Submit">
     </form>
+    </div>
+    </div>
 	
+    <div class="modal remove">
+        <div class="modal-content">
+        <span class="close">&times;</span>
 	<form class="remove hidden" id="delete-transaction">
         <p>Remove existing transaction:</p>
         <label for="name">Choose a transaction to remove:</label><br>
@@ -61,6 +70,8 @@
         </select><br>
         <input type="submit" value="Submit">
 	</form>
+    </div>
+    </div>
 	
 </center>
 <script src="/transactions.js" charset="utf-8" defer></script>

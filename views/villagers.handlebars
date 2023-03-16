@@ -27,7 +27,9 @@
         
     </form>
 
-    
+    <div class="modal update">
+        <div class="modal-content">
+        <span class="close">&times;</span>
     <form class="update hidden" id="add-item">
         <p>Add item to villager:</p>
         <label for="name">Choose an villager to update:</label><br>
@@ -40,7 +42,7 @@
         <input type="submit" value="Submit">
     </form>
     
-    <form class="update hidden" id="update-villager">
+    <form class="update" id="update-villager">
         <p>Update existing villager:</p>
         <label for="name">Choose an villager to update:</label><br>
         <select id="villager-new" name="name">
@@ -56,13 +58,20 @@
         <label for="status">Villager Status:</label><br>
         <input type="text" id="status" name="status"><br>  
         <input type="submit" value="Submit">
-
     </form>
-    <form class="remove hidden" id="remove-villager">
+    </div>
+    </div>
+
+    <div class="modal remove">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+    <form class="remove" id="remove-villager">
         <label for="remove">Choose an villager to remove:</label><br>
         <select id="villager-remove" name="name">
         </select><br>
         <input type="submit" value="Submit">
     </form>
+    </div>
+    </div>
 </center>
 <script src="/villagers.js" charset="utf-8" defer></script>

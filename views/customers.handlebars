@@ -2,15 +2,17 @@
 <center>	
 	<table border="1" cellpadding="5" id="table">
 	</table>
-	
     <p>Add a new customer:</p>
-    <form form class="insert" id="add-customer">
+    <form class="insert" id="add-customer">
         <label for="name">Customer Name:</label><br>
         <input type="text" id="name" name="name"><br>   
         <input type="submit" value="Submit">
     </form>
-	
-	<form form class="update hidden" id="update-customer">
+
+	<div class="modal update">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+	<form class="update" id="update-customer">
         <label for="customer">Customer to update:</label><br>
         <select id="customer" name="name">
         </select><br>
@@ -18,14 +20,20 @@
         <input type="text" id="name" name="new-name"><br> 
         <input type="submit" value="Submit">
     </form>
-	
-	
-	<form class="remove hidden" id="delete-customer">
+    </div>
+	</div>
+
+	<div class="modal remove">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+	<form class="remove" id="delete-customer">
         <p>Remove existing customer:</p>
         <label for="name">Choose a customer to remove:</label><br>
         <select id="customer-remove" name="name">
         </select><br>
         <input type="submit" value="Submit">
 	</form>
+    </div>
+    </div>
 </center>
 <script src="/customers.js" charset="utf-8" defer></script>

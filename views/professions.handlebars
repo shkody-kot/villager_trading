@@ -3,6 +3,7 @@
 	<table border="1" cellpadding="5" id="table">
 	</table>
 	
+    
     <p>Add a new profession:</p>
     <form class="insert" id="add-profession">
         <label for="name">Profession Name:</label><br>
@@ -13,6 +14,9 @@
         <input type="submit" value="Submit">
     </form>
 	
+    <div class="modal update">
+        <div class="modal-content">
+        <span class="close">&times;</span>
 	<form class="update hidden" id="update-profession">
         <p>Update existing profession:</p>
         <label for="name">Choose a profession to update:</label><br>
@@ -24,7 +28,13 @@
 		
         <input type="submit" value="Submit">
     </form>
+    </div>
+    </div>
 	
+
+    	<div class="modal remove">
+        <div class="modal-content">
+        <span class="close">&times;</span>
 	<form class="remove hidden" id="delete-profession">
         <p>Remove a profession:</p>
         <label for="name">Choose a profession to remove:</label><br>
@@ -33,6 +43,8 @@
 		
         <input type="submit" value="Submit">
     </form>	
+    </div>
+    </div>
 		
 	
 </center>

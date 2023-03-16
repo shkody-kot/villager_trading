@@ -4,27 +4,31 @@ var delete_buttons = document.getElementsByClassName('delete');
 var submit = document.querySelectorAll('input[type=submit]');
 var update = document.getElementsByClassName('update');
 var remove = document.getElementsByClassName('remove');
-
+var close = document.getElementsByClassName("close");
 //functions to show add/delete modals on click
 function hide() {
 	for(var i = 0; i < update.length; i++) {
-        update[i].className += "hidden"; 
+        update[i].style.display = "none";
     }
 
 	for(var i = 0; i < remove.length; i++) {
-        remove[i].className += "hidden"; 
+       remove[i].style.display = "none"; 
     }
+}
+
+for (var i = 0; i < close.length; i++) {
+    close[i].addEventListener('click', hide, false);
 }
 
 function unhide_update() {
 	for(var i = 0; i < update.length; i++) {
-		update[i].classList.toggle("hidden"); 
+		update[i].style.display = "block";
     }
 }
 
 function unhide_delete() {
 	for(var i = 0; i < remove.length; i++) {
-        remove[i].classList.toggle("hidden"); 
+        remove[i].style.display = "block";
     }
 }
 

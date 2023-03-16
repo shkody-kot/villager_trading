@@ -20,6 +20,9 @@
         <input type="submit" value="Submit">
     </form>
 
+	<div class="modal update">
+        <div class="modal-content">
+        <span class="close">&times;</span>
     <form class="update hidden" id="update-item">
         <p>Update existing item:</p>
         <label for="name">Choose an item to update:</label><br>
@@ -37,7 +40,12 @@
         </select><br>
         <input type="submit" value="Submit">
     </form>
+    </div>
+    </div>
 
+    <div class="modal remove">
+        <div class="modal-content">
+        <span class="close">&times;</span>
     <form class="remove hidden" id="delete-item">
         <p>Remove existing item:</p>
         <label for="name">Choose an item to remove:</label><br>
@@ -45,5 +53,8 @@
         </select><br>
         <input type="submit" value="Submit">
 	</form>
+    </div>
+    </div>
+    
 </center>
 <script src="/items.js" charset="utf-8" defer></script>
