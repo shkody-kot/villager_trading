@@ -29,3 +29,22 @@ delete_transaction.addEventListener('submit', function(event){
 	fetch_data(url[1], true, query, fill_table);
     location.reload()
 });
+
+var update_transaction = document.getElementById('update-transaction');
+update_transaction.addEventListener('submit', function(event){
+	event.preventDefault();
+    var form_data = new FormData(document.getElementById('update-transaction'));
+    
+	var name = form_data.get('name');
+    var villager = form_data.get('villager');
+    var price = form_data.get('price');
+
+    var item = form_data.get('item');
+    var num = form_data.get('num');
+	
+	var query = `UPDATE transactions SET villager_id = (SELECT villager_id FROM villagers WHERE name = '${villager}'), total_price = ${price} WHERE transaction_id = ${name};`;
+	var query2 = `INSERT INTO transaction_has_items (transaction_id, item_id, quantity) VALUES ((SELECT transaction_id FROM transactions WHERE transaction_id = ${name}), (SELECT item_id FROM items WHERE name = '${item}'), ${num});`;
+	fetch_data(url[1], true, query, fill_table);
+    fetch_data(url[1], true, query2, fill_table);
+    location.reload()
+});

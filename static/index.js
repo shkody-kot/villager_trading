@@ -5,6 +5,9 @@ var submit = document.querySelectorAll('input[type=submit]');
 var update = document.getElementsByClassName('update');
 var remove = document.getElementsByClassName('remove');
 var close = document.getElementsByClassName("close");
+
+var url = window.location.pathname.split('/');
+
 //functions to show add/delete modals on click
 function hide() {
 	for(var i = 0; i < update.length; i++) {
@@ -42,6 +45,7 @@ for (var i = 0; i < edit_buttons.length; i++) {
 
 for (var i = 0; i < delete_buttons.length; i++) {
     delete_buttons[i].addEventListener('click', unhide_delete);
+	
 }
 
 function validate(datafield)
@@ -49,4 +53,17 @@ function validate(datafield)
 	if (!datafield) { alert("fields cannot be empty"); return false; }
 	if (datafield.includes("'")) { alert("fields cannot contain single quotes"); return false; }
 	return true;
+}
+
+//source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements
+//not used
+function pre_fill_form(form, data)
+{
+	var form_name = form + "-" + url[1];
+	console.log(form_name);
+	var form_data = document.getElementById(form_name).elements;
+	for (var i = 0; i < form_data.length; i++)
+	{
+		form_data[i].value = data[i];
+	}
 }

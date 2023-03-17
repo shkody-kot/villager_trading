@@ -79,7 +79,6 @@ app.post('/tables', function(request, response) {
 	else if (page == 'items')
 	{
 		query = "SELECT name AS Name, cost AS Price, amount AS Amount, trade_name AS Profession FROM items \
-		GROUP BY trade_name \
 		ORDER BY trade_name ASC;";
 	}
 	// if page is home, load all queries
