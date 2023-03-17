@@ -22,6 +22,31 @@ input[type=submit] {
 	box-shadow: 5px 2px 5px #949494;
 }
 
+.card-container {
+	justify-content: space-between;
+}
+
+.card {
+	/* Add shadows to create the "card" effect */
+	margin-left: 80px;
+	margin-right: 80px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	width: 20%;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+	padding: 2px 16px;
+  }
+
 /* The Modal (background) */
 .modal {
 	display: none; /* Hidden by default */
