@@ -68,6 +68,14 @@ function fill_table(data)
 		else if (url[1] == 'customers' && !customers.includes(name)) { customers.push(name); localStorage.setItem("customers", JSON.stringify(customers));}
 		else if (url[1] == 'professions' && !trades.includes(name)) { trades.push(name); localStorage.setItem("trades", JSON.stringify(trades));}
 		else if (url[1] == 'discounts' && !discounts.includes(name)) { discounts.push(name); localStorage.setItem("discounts", JSON.stringify(discounts));}
+		else if (url[1] == 'transactions'){
+			name = data[each_item].Transaction;
+			if (!transactions.includes(name))
+			{ 
+				transactions.push(name); 
+				localStorage.setItem("transactions", JSON.stringify(transactions));
+			}
+		}
 		
 		table_data = document.createElement("tr");
 		
@@ -167,7 +175,7 @@ var item = document.getElementById("item");
 var customer = document.getElementById("customer");
 var discount = document.getElementById("discount");
 var profession = document.getElementById("profession-update");
-var transaction = document.getElementById("transaction");
+var transaction = document.getElementById("add-transaction");
 
 if (villager)
 {
@@ -202,7 +210,7 @@ if (profession)
 	else if (url[1] == 'items' || url[1] == 'villagers') { fill_dropdown("profession-add", 'trades'); }
 }
 if (transaction) 
-{ 
-	fill_dropdown("transaction", 'transactions'); 
+{
 	fill_dropdown("transaction-remove", "transactions");
+	fill_dropdown("transaction-update", "transactions");
 }

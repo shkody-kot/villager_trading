@@ -4,10 +4,11 @@
 	</table>
 
     <form id="search-person-html" method='GET' action='/transactions'>
-    <label for="input-customer">Filter by Customer: </label><br>
-    <input type="text" name="customersearch" id="input-customer-html-search"><br>
-    <input type="submit"><br>
-    <a href='/transactions'><button class="button">Reset</button></a>
+		<label for="input-customer">Filter by Customer: </label><br>
+		<input type="text" name="customersearch" id="input-customer-html-search"><br>
+		<input type="submit"><br>
+		<a href='/transactions'><button class="button">Reset</button></a>
+	</form>
 
     <p>Add a new transaction:</p>
     <form class="insert" id="add-transaction">
@@ -42,11 +43,14 @@
         <div class="modal-content">
         <span class="close">&times;</span>
 
-    <form class="update hidden" id="add-item">
-        <p>Add item to transaction:</p>
+    <form class="update hidden" id="update-transaction">
+        <p>Update an existing transaction:</p>
         <label for="trans">Choose a transaction to update:</label><br>
+		<select id="transaction-update" name="name">
         </select><br>
-        <select id="villager-update" name="trans">
+		<label for="villager">Update the villager:</label><br>
+        <select id="villager-update" name="villager">
+			<option value="null"> NULL </option>
         </select><br>
 		
         <label for="item">Choose an item to add:</label><br>
@@ -54,7 +58,10 @@
         </select><br>
 		
         <label for="num">Enter the number of items:</label><br>
-        <input type="number" min="1" id="num" name="num"><br>
+        <input type="number" min="1" max="5000000" id="num" name="num"><br>
+		
+		<label for="price">New total Price:</label><br>
+        <input type="number" min="1" max="5000000" id="price" name="price"><br>
         <input type="submit" value="Submit">
     </form>
     </div>
