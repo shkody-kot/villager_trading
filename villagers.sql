@@ -40,7 +40,7 @@ CREATE TABLE villagers (
 -- -----------------------------------
 CREATE TABLE items (
 	item_id		int NOT NULL AUTO_INCREMENT,
-	name		varchar(45) NOT NULL,
+	name		varchar(45) NOT NULL UNIQUE,
 	cost 		int NOT NULL,
 	amount 		int, 
 	trade_name	varchar(45) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE items (
 -- -----------------------------------
 CREATE TABLE discounts (
 	discount_id	int NOT NULL AUTO_INCREMENT,
-	name 		varchar(45) NOT NULL,
+	name 		varchar(45) NOT NULL UNIQUE,
 	`percent`	int NOT NULL,
 	PRIMARY KEY (discount_id)
 );
@@ -63,7 +63,7 @@ CREATE TABLE discounts (
 -- -----------------------------------
 CREATE TABLE customers (
 	customer_id	int NOT NULL AUTO_INCREMENT,
-	name		varchar(45) NOT NULL,
+	name		varchar(45) NOT NULL UNIQUE,
 	PRIMARY KEY (customer_id)
 );
 

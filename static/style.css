@@ -1,4 +1,11 @@
-
+/*
+Style code for card and card-container code, modified: https://www.w3schools.com/howto/howto_css_cards.asp
+3/16/2023
+Style code for navitem and animated switch taken from: https://www.30secondsofcode.org/css/s/hover-underline-animation#:~:text=Creates%20an%20animated%20underline%20effect,place%20it%20below%20the%20content.
+1/22/2023
+Code for modal style adapted from: https://www.w3schools.com/howto/howto_css_modals.asp
+3/15/2023
+*/
 
 body {
 	font-family: Minecraft, Helvetica, sans-serif;
@@ -7,6 +14,7 @@ body {
 	width: 100%;
 }
 
+/* style input form submit button*/
 input[type=submit] {
 	background-color:#237a16;
 	font-size: 1.3vw;
@@ -22,6 +30,7 @@ input[type=submit] {
 	box-shadow: 5px 2px 5px #949494;
 }
 
+/* Style card and format*/
 .card-container {
 	justify-content: space-between;
 }
@@ -37,17 +46,16 @@ input[type=submit] {
 	width: 20%;
   }
   
-  /* On mouse-over, add a deeper shadow */
+
   .card:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
   
-  /* Add some padding inside the card container */
   .container {
 	padding: 2px 16px;
   }
 
-/* The Modal (background) */
+
 .modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -96,6 +104,7 @@ input[type=text] {
 	margin: 5px;
 }
 
+/*style input forms and dropdown menus*/
 input[type=number] {
 	font-size: 1.3vw;
 	background-color: white;
@@ -120,7 +129,6 @@ select {
 	background-color: white;
   }
 
-
 a {
 	position: relative;
 	color: #237a16;;
@@ -131,10 +139,12 @@ a {
 	color: #237a16;;
   }
 
+/*code to assist with modal*/
 .hidden {
 	display: none;
 }
   
+/*animated nav item on hover*/
 .navitem::after {
     content: "";
     display: block;
@@ -149,6 +159,8 @@ a {
     width: 100%;
     transition: all 0.4s;
 }
+
+/*style tables and content inside*/
 .tablesub {
 	margin-top:20px;
 	border-radius: 8px;
@@ -165,6 +177,7 @@ a {
 	color: #fff;
 }
 
+/*style navigation bar and items*/
 .navbar {
 	background-color: #fff;
 	font-size: 18px;
@@ -185,10 +198,12 @@ a {
 
 .navlink.active { box-shadow: inset 0 -3px #237a16; }
 
+/*add space between end of content and end of page*/
 .footer {
 	height: 100px;
 }
 
+/*style buttons*/
 .button {
 	background-color: #adadad;
 	color: white;
@@ -210,6 +225,8 @@ a {
 	background-color: #a5b6d9;
 	color: white;
 }
+
+/*style table and content inside*/
 #table {
 	margin: 10px;
 	padding: 10px;
@@ -242,10 +259,6 @@ tr {
 tr:nth-child(even) {
     background-color: #d5d5d5;
 }
-
-/*tr:hover {
-    background-color: #c8ccc8;
-}*/
 
 th {
     padding-top: 20px;

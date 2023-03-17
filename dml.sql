@@ -47,6 +47,22 @@ LEFT JOIN transaction_has_items ON transactions.transaction_id = transaction_has
 LEFT JOIN items ON transaction_has_items.item_id = items.item_id
 ORDER BY transactions.transaction_id ASC;
 
+-- -----------------------------------
+-- Select info from transactions (dynamic search)
+-- -----------------------------------
+
+SELECT transactions.transaction_id, customers.name AS customer, 
+villagers.name AS villager, discounts.name AS discount, transactions.total_price,
+items.name AS item, transaction_has_items.quantity
+FROM transactions
+LEFT JOIN discounts ON transactions.discount_id = discounts.discount_id
+LEFT JOIN villagers ON transactions.villager_id = villagers.villager_id
+LEFT JOIN customers ON transactions.customer_id = customers.customer_id
+LEFT JOIN transaction_has_items ON transactions.transaction_id = transaction_has_items.transaction_id
+LEFT JOIN items ON transaction_has_items.item_id = items.item_id
+WHERE customers.name LIKE [customer-name-typed]%
+ORDER BY transactions.transaction_id ASC;
+
 -- NOTE: items in [] are user-input into backend
 
 -- -----------------------------------
@@ -101,9 +117,10 @@ VALUES ([transaction_id-stored], (SELECT item_id FROM items WHERE name = [item_n
 -- -----------------------------------
 UPDATE transactions
 SET villager_id = (SELECT villager_id FROM villagers WHERE name = [villager_name-dropdown] OR IS NULL name),
-customer_id = (SELECT customer_id FROM customers WHERE name LIKE [customer_name-typed]%),
+customer_id = (SELECT customer_id FROM customers WHERE name LIKE [customer_name-dropdown]),
 discount_id = (SELECT discount_id FROM discounts WHERE name = [discounts-dropdown] OR IS NULL name),
 total_price = [total_price-typed];
+
 -- -----------------------------------
 -- Update an existing transaction by adding items
 -- -----------------------------------

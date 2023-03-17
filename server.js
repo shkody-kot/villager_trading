@@ -49,6 +49,7 @@ app.post('/tables', function(request, response) {
 	{
 		
 		if (query_cust === undefined) {
+			//query to display table if search table is blank
 			query = "SELECT transactions.transaction_id AS Transaction, customers.name AS Customer, \
 			villagers.name AS Villager, discounts.name AS Discount, transactions.total_price AS `Total Price`, \
 			items.name AS Item, transaction_has_items.quantity AS Quantity\
@@ -61,6 +62,7 @@ app.post('/tables', function(request, response) {
 			ORDER BY transactions.transaction_id ASC;";
 		}
 		else {
+			//query to display table based on customer search entered
 			query = `SELECT transactions.transaction_id AS Transaction, customers.name AS Customer, \
 			villagers.name AS Villager, discounts.name AS Discount, transactions.total_price AS 'Total Price', \
 			items.name AS Item, transaction_has_items.quantity AS Quantity\
@@ -107,6 +109,8 @@ app.post('/tables', function(request, response) {
 		});
 	}
 
+
+
 	// update if there is new information
 	if (request.body.update == true)
 	{
@@ -125,6 +129,7 @@ app.post('/tables', function(request, response) {
 		});
 	}
 });
+
 
 
 //Server's GET requests for pages

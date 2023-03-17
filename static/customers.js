@@ -1,3 +1,13 @@
+/* 
+CITATIONS:
+Access from data in javascript, from stackoverflow – syntax (it’s one line): https://stackoverflow.com/questions/588263/how-can-i-get-all-a-forms-values-that-would-be-submitted-without-submitting 
+Feb 27, 2023
+Prevent default actions on form submit, from MDN – syntax (it is also one line): https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault 
+Feb 27, 2023
+*/
+
+
+//add a customer and refresh page to update
 var add_customer = document.getElementById('add-customer');
 add_customer.addEventListener('submit', function(event){
     event.preventDefault();
@@ -12,6 +22,8 @@ add_customer.addEventListener('submit', function(event){
     location.reload();
 });
 
+
+//update a customer and refresh page to update
 var update_customer = document.getElementById('update-customer');
 update_customer.addEventListener('submit', function(event){
 	event.preventDefault();
@@ -26,6 +38,7 @@ update_customer.addEventListener('submit', function(event){
     location.reload();
 });
 
+//delete a customer and refresh page to update
 var delete_customer = document.getElementById('delete-customer');
 delete_customer.addEventListener('submit', function(event){
 	event.preventDefault();

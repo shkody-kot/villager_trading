@@ -1,3 +1,9 @@
+/*
+CITATIONS:
+hide() and unhide() modal functions adapted from: https://www.w3schools.com/howto/howto_css_modals.asp
+3/15/2023
+*/
+
 //select buttons/forms to show/hide buttons on click
 var edit_buttons = document.getElementsByClassName('edit');
 var delete_buttons = document.getElementsByClassName('delete');
@@ -23,6 +29,7 @@ for (var i = 0; i < close.length; i++) {
     close[i].addEventListener('click', hide, false);
 }
 
+//functions to show modals on click
 function unhide_update() {
 	for(var i = 0; i < update.length; i++) {
 		update[i].style.display = "block";
@@ -35,6 +42,7 @@ function unhide_delete() {
     }
 }
 
+//functions to hide info on click
 for (var i = 0; i < submit.length; i++) {
     submit[i].addEventListener('click', hide);
 }
@@ -48,22 +56,10 @@ for (var i = 0; i < delete_buttons.length; i++) {
 	
 }
 
+//basic validation for data
 function validate(datafield)
 {
 	if (!datafield) { alert("fields cannot be empty"); return false; }
 	if (datafield.includes("'")) { alert("fields cannot contain single quotes"); return false; }
 	return true;
-}
-
-//source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements
-//not used
-function pre_fill_form(form, data)
-{
-	var form_name = form + "-" + url[1];
-	console.log(form_name);
-	var form_data = document.getElementById(form_name).elements;
-	for (var i = 0; i < form_data.length; i++)
-	{
-		form_data[i].value = data[i];
-	}
 }

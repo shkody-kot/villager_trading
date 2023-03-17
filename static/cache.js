@@ -1,3 +1,15 @@
+/*
+CITATIONS:
+Table html code,from ED discussions user Iain Moncrief, modified for templating: https://edstem.org/us/courses/32532/discussion/2559944 
+2/12/2023
+Dynamically populated dropdowns, from stackoverflow – modified code to fit our particular needs to depend off of an array of data not a previous dropdown: https://stackoverflow.com/questions/30232146/dynamically-populating-drop-down-list-from-selection-of-another-drop-down-value
+2/14/2023
+Local storage, from MDN – syntax (this was a new concept to us): https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage 
+2/14/2023
+Fill table from array, from stackoverflow – based on various code examples presented, not copied verbatim from any one example: https://stackoverflow.com/questions/5180382/convert-json-data-to-a-html-table 
+2/12/2023
+*/
+
 var url = window.location.pathname.split('/');
 //store some data (item names, villager names, trade names, customer names, transactions) for dropdown purposes
 var items = [];

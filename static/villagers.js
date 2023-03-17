@@ -1,4 +1,12 @@
-//add a new villager
+/* 
+CITATIONS:
+Access from data in javascript, from stackoverflow – syntax (it’s one line): https://stackoverflow.com/questions/588263/how-can-i-get-all-a-forms-values-that-would-be-submitted-without-submitting 
+Feb 27, 2023
+Prevent default actions on form submit, from MDN – syntax (it is also one line): https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault 
+Feb 27, 2023
+*/
+
+//add a new villager and refresh page to update
 var add_villager = document.getElementById('add-villager');
 add_villager.addEventListener('submit', function(event){
     event.preventDefault();
@@ -21,7 +29,7 @@ add_villager.addEventListener('submit', function(event){
     location.reload()
 });
 
-//update an existing villager
+//update an existing villager and refresh page to update
 var update_villager = document.getElementById('update-villager');
 update_villager.addEventListener('submit', function(event){
     event.preventDefault();
@@ -39,7 +47,7 @@ update_villager.addEventListener('submit', function(event){
     location.reload()
 });
 
-//add item to a villager
+//add item to a villager and refresh page to update
 var add_item = document.getElementById('add-item');
 add_item.addEventListener('submit', function(event){
     event.preventDefault();
@@ -53,7 +61,7 @@ add_item.addEventListener('submit', function(event){
     location.reload()
 });
 
-//delete villager
+//delete villager and refresh page to update
 var delete_item = document.getElementById('remove-villager');
 delete_item.addEventListener('submit', function(event) {
     var form_data = new FormData(document.getElementById('remove-villager'));		

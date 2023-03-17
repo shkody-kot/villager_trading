@@ -1,3 +1,9 @@
+/* 
+CITATIONS:
+Code from Activity 2: Connect Database to Webapp. Unmodified
+2/13/2023
+*/
+
 //Get an instance of mysql to be used in the application
 var mysql = require("mysql");
 
