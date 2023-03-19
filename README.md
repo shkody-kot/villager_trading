@@ -41,3 +41,6 @@ We looked up a lot of specific syntax questions, where the code provided by thos
 ### villagers.handlebars, transactions.handlebars, discounts.handlebars, professions.handlebars, items.handlebars, customers.handlebars
 - Code for modal divs and class formatting adapted from: https://www.w3schools.com/howto/howto_css_modals.asp
     - 3/15/2023
+- Transactions.handlebars: code for dynamic search adapted from CS340 starter app: https://github.com/osu-cs340-ecampus/nodejs-starter-app
+    - 3/15/2023
+
