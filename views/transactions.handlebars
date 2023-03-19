@@ -3,6 +3,7 @@
 	<table border="1" cellpadding="5" id="table">
 	</table>
 
+    <!-- Form to add dynamic search based on customer name. -->
     <form id="search-person-html" method='GET' action='/transactions'>
 		<label for="input-customer">Filter by Customer: </label><br>
 		<input type="text" name="customersearch" id="input-customer-html-search"><br>
@@ -10,13 +11,14 @@
 		<a href='/transactions'><button class="button">Reset</button></a>
 	</form>
 
+    <!-- Form to add a new transaction. -->
     <p>Add a new transaction:</p>
     <form class="insert" id="add-transaction">
         <label for="villager">Villager:</label><br>
         <select id="villager-new" name="villager">
 			<option value="null"> NULL </option>
         </select><br>
-		
+
         <label for="customer">Customer:</label><br>
         <select id="customer" name="customer">
         </select><br>
@@ -39,45 +41,47 @@
         <input type="submit" value="Submit">
     </form>
 
+    <!-- Form and modal to update a transaction. -->
     <div class="modal update">
         <div class="modal-content">
-        <span class="close">&times;</span>
+            <span class="close">&times;</span>
 
-    <form class="update hidden" id="update-transaction">
-        <p>Update an existing transaction:</p>
-        <label for="trans">Choose a transaction to update:</label><br>
-		<select id="transaction-update" name="name">
-        </select><br>
-		<label for="villager">Update the villager:</label><br>
-        <select id="villager-update" name="villager">
-			<option value="null"> NULL </option>
-        </select><br>
-		
-        <label for="item">Choose an item to add:</label><br>
-        <select id="item-update" name="item">
-        </select><br>
-		
-        <label for="num">Enter the number of items:</label><br>
-        <input type="number" min="1" max="5000000" id="num" name="num"><br>
-		
-		<label for="price">New total Price:</label><br>
-        <input type="number" min="1" max="5000000" id="price" name="price"><br>
-        <input type="submit" value="Submit">
-    </form>
-    </div>
+            <form class="update hidden" id="update-transaction">
+                <p>Update an existing transaction:</p>
+                <label for="trans">Choose a transaction to update:</label><br>
+                <select id="transaction-update" name="name">
+                </select><br>
+                <label for="villager">Update the villager:</label><br>
+                <select id="villager-update" name="villager">
+                    <option value="null"> NULL </option>
+                </select><br>
+                
+                <label for="item">Choose an item to add:</label><br>
+                <select id="item-update" name="item">
+                </select><br>
+                
+                <label for="num">Enter the number of items:</label><br>
+                <input type="number" min="1" max="5000000" id="num" name="num"><br>
+                
+                <label for="price">New total Price:</label><br>
+                <input type="number" min="1" max="5000000" id="price" name="price"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 	
+    <!-- Form to remove a transaction. -->
     <div class="modal remove">
         <div class="modal-content">
-        <span class="close">&times;</span>
-	<form class="remove hidden" id="delete-transaction">
-        <p>Remove existing transaction:</p>
-        <label for="name">Choose a transaction to remove:</label><br>
-        <select id="transaction-remove" name="name">
-        </select><br>
-        <input type="submit" value="Submit">
-	</form>
-    </div>
+            <span class="close">&times;</span>
+            <form class="remove hidden" id="delete-transaction">
+                <p>Remove existing transaction:</p>
+                <label for="name">Choose a transaction to remove:</label><br>
+                <select id="transaction-remove" name="name">
+                </select><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 	
 </center>

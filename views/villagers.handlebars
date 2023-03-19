@@ -4,6 +4,7 @@
 	<table border="1" cellpadding="5" id="table">
 	</table>
 	
+    <!-- Form to add a new villager. -->
     <p>Add a new villager:</p>
     <form class="insert" id="add-villager">
         <label for="name">Villager Name:</label><br>
@@ -23,45 +24,46 @@
         <select id="item" name="item">
         </select><br>
             
-        <input type="submit" value="Submit">
-        
+        <input type="submit" value="Submit">     
     </form>
 
+    <!-- Form and modal to update a villager. -->
     <div class="modal update">
         <div class="modal-content">
-        <span class="close">&times;</span>
-    <form class="update hidden" id="add-item">
-        <p>Add item to villager:</p>
-        <label for="name">Choose an villager to update:</label><br>
-        <select id="villager-update" name="name">
-        </select><br>
-		
-        <label for="item">Choose an item to add:</label><br>
-        <select id="item-update" name="item">
-        </select><br>
-        <input type="submit" value="Submit">
-    </form>
-    
-    <form class="update" id="update-villager">
-        <p>Update existing villager:</p>
-        <label for="name">Choose an villager to update:</label><br>
-        <select id="villager-new" name="name">
-        </select><br>
-		
-        <label for="profession">Villager Profession:</label><br>
-        <select id="profession-update" name="profession">
-        </select><br>
-		
-        <label for="age">Villager Age:</label><br>
-        <input type="number" min="1" id="age" name="age"><br>
-		
-        <label for="status">Villager Status:</label><br>
-        <input type="text" id="status" name="status"><br>  
-        <input type="submit" value="Submit">
-    </form>
-    </div>
+            <span class="close">&times;</span>
+            <form class="update hidden" id="add-item">
+                <p>Add item to villager:</p>
+                <label for="name">Choose an villager to update:</label><br>
+                <select id="villager-update" name="name">
+                </select><br>
+                
+                <label for="item">Choose an item to add:</label><br>
+                <select id="item-update" name="item">
+                </select><br>
+                <input type="submit" value="Submit">
+            </form>
+        
+            <form class="update" id="update-villager">
+                <p>Update existing villager:</p>
+                <label for="name">Choose an villager to update:</label><br>
+                <select id="villager-new" name="name">
+                </select><br>
+                
+                <label for="profession">Villager Profession:</label><br>
+                <select id="profession-update" name="profession">
+                </select><br>
+                
+                <label for="age">Villager Age:</label><br>
+                <input type="number" min="1" id="age" name="age"><br>
+                
+                <label for="status">Villager Status:</label><br>
+                <input type="text" id="status" name="status"><br>  
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 
+    <!-- Form and modal to delete a villager. -->
     <div class="modal remove">
         <div class="modal-content">
         <span class="close">&times;</span>

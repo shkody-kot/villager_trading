@@ -1,3 +1,8 @@
+/*
+Code for dynamic search adapted from CS340 starter app: https://github.com/osu-cs340-ecampus/nodejs-starter-app
+3/15/2023
+*/
+
 //set up dependencies
 const express = require("express");
 var path = require('path');
@@ -8,7 +13,7 @@ var db = require('./connector');
 
 //create application
 var app = express();
-var query_cust;
+var query_cust; //used to track query for dynamic search
 
 //includes all the funky little css and js files
 app.use(express.static(__dirname + '/static'));
@@ -27,7 +32,7 @@ app.engine('handlebars', hbs.engine({
 	partialsDir: path.join(__dirname, '/views/partials')
 }));
 
-//Server POST requests for displaying tables
+//Server POST requests for displaying tables on each page
 app.post('/tables', function(request, response) {
 	var page = request.body.url;
 	console.log(page);
@@ -109,8 +114,6 @@ app.post('/tables', function(request, response) {
 		});
 	}
 
-
-
 	// update if there is new information
 	if (request.body.update == true)
 	{
@@ -129,7 +132,6 @@ app.post('/tables', function(request, response) {
 		});
 	}
 });
-
 
 
 //Server's GET requests for pages

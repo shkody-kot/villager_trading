@@ -2,6 +2,8 @@
 <center>
 	<table border="1" cellpadding="5" id="table">
 	</table>
+
+    <!-- Form to add a new discount. -->
     <p>Add a new discount:</p>
     <form class="insert" id="add-discount">
         <label for="name">Discount Name:</label><br>
@@ -12,35 +14,36 @@
         <input type="submit" value="Submit">
     </form>
 
-	
+	<!-- Modal and form to update a discount. -->
 	<div class="modal update">
         <div class="modal-content">
-        <span class="close">&times;</span>
-	<form class="update" id="update-discount">
-        <p>Update a discount:</p>
-        <label for="name">Choose a discount to update:</label><br>
-        <select id="discount" name="name">
-        </select><br>
-		
-        <label for="percent">Discount Percent:</label><br>
-        <input type="number" min="1" max="100" id="percent" name="percent"><br>
-        </select><br>
-        <input type="submit" value="Submit">
-    </form>
-    </div>
+            <span class="close">&times;</span>
+            <form class="update" id="update-discount">
+                <p>Update a discount:</p>
+                <label for="name">Choose a discount to update:</label><br>
+                <select id="discount" name="name">
+                </select><br>
+                
+                <label for="percent">Discount Percent:</label><br>
+                <input type="number" min="1" max="100" id="percent" name="percent"><br>
+                </select><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 	
+    <!-- Modal and form to delete a discount. -->
 	<div class="modal remove">
         <div class="modal-content">
-        <span class="close">&times;</span>
-	<form class="remove" id="delete-discount">
-        <p>Remove existing discount:</p>
-        <label for="name">Choose a discount to remove:</label><br>
-        <select id="discount-remove" name="name">
-        </select><br>
-        <input type="submit" value="Submit">
-	</form>
-    </div>
+            <span class="close">&times;</span>
+            <form class="remove" id="delete-discount">
+                <p>Remove existing discount:</p>
+                <label for="name">Choose a discount to remove:</label><br>
+                <select id="discount-remove" name="name">
+                </select><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 </center>
 <script src="/discounts.js" charset="utf-8" defer></script>

@@ -117,7 +117,7 @@ VALUES ([transaction_id-stored], (SELECT item_id FROM items WHERE name = [item_n
 -- -----------------------------------
 UPDATE transactions
 SET villager_id = (SELECT villager_id FROM villagers WHERE name = [villager_name-dropdown] OR IS NULL name),
-customer_id = (SELECT customer_id FROM customers WHERE name LIKE [customer_name-dropdown]),
+customer_id = (SELECT customer_id FROM customers WHERE name = [customer_name-dropdown]),
 discount_id = (SELECT discount_id FROM discounts WHERE name = [discounts-dropdown] OR IS NULL name),
 total_price = [total_price-typed];
 
@@ -128,7 +128,7 @@ INSERT INTO transaction_has_items (transaction_id, item_id)
 VALUES (
 (SELECT transaction_id FROM transactions 
 	INNER JOIN customers ON customers.customer_id = transactions.customer_id
-	WHERE customer.name LIKE [customer_name-typed]%), 
+	WHERE customer.name = [customer_name-dropdown]), 
 (SELECT item_id FROM items WHERE name = [item_name-dropdown]), [quantity-typed]);
 
 -- -----------------------------------

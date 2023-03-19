@@ -3,6 +3,7 @@
 	<table border="1" cellpadding="5" id="table">
 	</table>
 	
+    <!-- Form to add a new item -->
     <p>Add a new item:</p>
     <form class="insert" id="add-new-item">
         <label for="name">Item Name:</label><br>
@@ -20,40 +21,42 @@
         <input type="submit" value="Submit">
     </form>
 
+    <!-- Modal and form to update an item. -->
 	<div class="modal update">
         <div class="modal-content">
-        <span class="close">&times;</span>
-    <form class="update hidden" id="update-item">
-        <p>Update existing item:</p>
-        <label for="name">Choose an item to update:</label><br>
-        <select id="item" name="name">
-        </select><br>
-		
-        <label for="cost">Item Cost:</label><br>
-        <input type="number" min="1" id="cost" name="cost"><br>
-		
-        <label for="amount">Number in stock:</label><br>
-        <input type="number" min="0" id="amount" name="amount"><br>
+            <span class="close">&times;</span>
+            <form class="update hidden" id="update-item">
+                <p>Update existing item:</p>
+                <label for="name">Choose an item to update:</label><br>
+                <select id="item" name="name">
+                </select><br>
+                
+                <label for="cost">Item Cost:</label><br>
+                <input type="number" min="1" id="cost" name="cost"><br>
+                
+                <label for="amount">Number in stock:</label><br>
+                <input type="number" min="0" id="amount" name="amount"><br>
 
-        <label for="profession">Villager Profession:</label><br>
-        <select id="profession-update" name="profession">
-        </select><br>
-        <input type="submit" value="Submit">
-    </form>
-    </div>
+                <label for="profession">Villager Profession:</label><br>
+                <select id="profession-update" name="profession">
+                </select><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 
+    <!-- Modal and form to remove an item. -->
     <div class="modal remove">
-        <div class="modal-content">
-        <span class="close">&times;</span>
-    <form class="remove hidden" id="delete-item">
-        <p>Remove existing item:</p>
-        <label for="name">Choose an item to remove:</label><br>
-        <select id="item-remove" name="name">
-        </select><br>
-        <input type="submit" value="Submit">
-	</form>
-    </div>
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="remove hidden" id="delete-item">
+                <p>Remove existing item:</p>
+                <label for="name">Choose an item to remove:</label><br>
+                <select id="item-remove" name="name">
+                </select><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
     
 </center>

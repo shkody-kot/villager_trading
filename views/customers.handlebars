@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <center>	
+    <!-- Code to display table. -->
 	<table border="1" cellpadding="5" id="table">
 	</table>
+
+    <!-- Form to add a new customer. -->
     <p>Add a new customer:</p>
     <form class="insert" id="add-customer">
         <label for="name">Customer Name:</label><br>
@@ -9,31 +12,33 @@
         <input type="submit" value="Submit">
     </form>
 
+    <!-- Modal for update forms. -->
 	<div class="modal update">
         <div class="modal-content">
-        <span class="close">&times;</span>
-	<form class="update" id="update-customer">
-        <label for="customer">Customer to update:</label><br>
-        <select id="customer" name="name">
-        </select><br>
-		<label for="name">New Customer Name:</label><br>
-        <input type="text" id="name" name="new-name"><br> 
-        <input type="submit" value="Submit">
-    </form>
-    </div>
+            <span class="close">&times;</span>
+            <form class="update" id="update-customer">
+                <label for="customer">Customer to update:</label><br>
+                <select id="customer" name="name">
+                </select><br>
+                <label for="name">New Customer Name:</label><br>
+                <input type="text" id="name" name="new-name"><br> 
+                <input type="submit" value="Submit">
+            </form>
+        </div>
 	</div>
 
+    <!-- Modal for delete forms. -->
 	<div class="modal remove">
         <div class="modal-content">
-        <span class="close">&times;</span>
-	<form class="remove" id="delete-customer">
-        <p>Remove existing customer:</p>
-        <label for="name">Choose a customer to remove:</label><br>
-        <select id="customer-remove" name="name">
-        </select><br>
-        <input type="submit" value="Submit">
-	</form>
-    </div>
+            <span class="close">&times;</span>
+            <form class="remove" id="delete-customer">
+                <p>Remove existing customer:</p>
+                <label for="name">Choose a customer to remove:</label><br>
+                <select id="customer-remove" name="name">
+                </select><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
     </div>
 </center>
 <script src="/customers.js" charset="utf-8" defer></script>

@@ -189,6 +189,7 @@ var discount = document.getElementById("discount");
 var profession = document.getElementById("profession-update");
 var transaction = document.getElementById("add-transaction");
 
+//fill dropdowns for each respective page based on which ones are present
 if (villager)
 {
 	fill_dropdown("villager-new", 'villagers'); 
