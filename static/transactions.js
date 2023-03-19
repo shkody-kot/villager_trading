@@ -54,8 +54,10 @@ update_transaction.addEventListener('submit', function(event){
     var num = form_data.get('num');
 	
 	var query = `UPDATE transactions SET villager_id = (SELECT villager_id FROM villagers WHERE name = '${villager}'), total_price = ${price} WHERE transaction_id = ${name};`;
-	var query2 = `INSERT INTO transaction_has_items (transaction_id, item_id, quantity) VALUES ((SELECT transaction_id FROM transactions WHERE transaction_id = ${name}), (SELECT item_id FROM items WHERE name = '${item}'), ${num});`;
-	fetch_data(url[1], true, query, fill_table);
-    fetch_data(url[1], true, query2, fill_table);
+    fetch_data(url[1], true, query, fill_table);
+    if (item != "null") {
+        var query2 = `INSERT INTO transaction_has_items (transaction_id, item_id, quantity) VALUES ((SELECT transaction_id FROM transactions WHERE transaction_id = ${name}), (SELECT item_id FROM items WHERE name = '${item}'), ${num});`;
+        fetch_data(url[1], true, query2, fill_table);
+    }
     location.reload()
 });
